@@ -20,6 +20,34 @@
                ReferencedContainer = "container:MetalGameEngine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "166571F7275B5CFA000505BF"
+               BuildableName = "MGE-macOSTests.xctest"
+               BlueprintName = "MGE-macOSTests"
+               ReferencedContainer = "container:MetalGameEngine.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "16657201275B5CFA000505BF"
+               BuildableName = "MGE-macOSUITests.xctest"
+               BlueprintName = "MGE-macOSUITests"
+               ReferencedContainer = "container:MetalGameEngine.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,26 +56,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "166571F7275B5CFA000505BF"
-               BuildableName = "MGE-macOSTests.xctest"
-               BlueprintName = "MGE-macOSTests"
-               ReferencedContainer = "container:MetalGameEngine.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "16657201275B5CFA000505BF"
-               BuildableName = "MGE-macOSUITests.xctest"
-               BlueprintName = "MGE-macOSUITests"
-               ReferencedContainer = "container:MetalGameEngine.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

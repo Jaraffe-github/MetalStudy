@@ -22,8 +22,16 @@ extension Texturable
         guard let url = Bundle.main.url(forResource: imageName, withExtension: fileExtension)
         else
         {
-            print("Failed to load \(imageName)\n - loading from Assets Catalog")
-            return try textureLoader.newTexture(name: imageName, scaleFactor: 1.0, bundle: Bundle.main, options: nil)
+            let texture = try? textureLoader.newTexture(name: imageName, scaleFactor: 1.0, bundle: Bundle.main, options: nil)
+            if texture != nil
+            {
+                print("loaded: \(imageName) from asset catalog")
+            }
+            else
+            {
+                print("Texture not found: \(imageName)")
+            }
+            return texture
         }
         
         let texture = try textureLoader.newTexture(URL: url, options: textureLoaderOption)

@@ -45,14 +45,6 @@
 		1640B770275CA92F006F0919 /* oilcan.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1640B76D275CA92F006F0919 /* oilcan.mtl */; };
 		1640B771275CA92F006F0919 /* oilcan.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B76E275CA92F006F0919 /* oilcan.obj */; };
 		1640B772275CA92F006F0919 /* oilcan.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B76E275CA92F006F0919 /* oilcan.obj */; };
-		1640B775275CA96B006F0919 /* oilcan-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B774275CA96B006F0919 /* oilcan-color.png */; };
-		1640B776275CA96B006F0919 /* oilcan-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B774275CA96B006F0919 /* oilcan-color.png */; };
-		1640B778275CA98A006F0919 /* racing-car-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B777275CA98A006F0919 /* racing-car-color.png */; };
-		1640B779275CA98A006F0919 /* racing-car-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B777275CA98A006F0919 /* racing-car-color.png */; };
-		1640B77B275CA9B0006F0919 /* racing-car-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B77A275CA9B0006F0919 /* racing-car-normal.png */; };
-		1640B77C275CA9B0006F0919 /* racing-car-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B77A275CA9B0006F0919 /* racing-car-normal.png */; };
-		1640B77E275CA9D6006F0919 /* racing-car-roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B77D275CA9D6006F0919 /* racing-car-roughness.png */; };
-		1640B77F275CA9D6006F0919 /* racing-car-roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B77D275CA9D6006F0919 /* racing-car-roughness.png */; };
 		1640B783275CAAD0006F0919 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B782275CAAD0006F0919 /* GameView.swift */; };
 		1640B786275CAAF0006F0919 /* InputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B785275CAAF0006F0919 /* InputController.swift */; };
 		1640B78A275CAD18006F0919 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B788275CAD18006F0919 /* GameView.swift */; };
@@ -61,10 +53,10 @@
 		1640B791275CB599006F0919 /* large-plane.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1640B78E275CB599006F0919 /* large-plane.mtl */; };
 		1640B792275CB599006F0919 /* large-plane.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B78F275CB599006F0919 /* large-plane.obj */; };
 		1640B793275CB599006F0919 /* large-plane.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B78F275CB599006F0919 /* large-plane.obj */; };
-		1640B795275CB63D006F0919 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B794275CB63D006F0919 /* ground.png */; };
-		1640B796275CB63D006F0919 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B794275CB63D006F0919 /* ground.png */; };
 		1640B798275CB680006F0919 /* ground.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B797275CB680006F0919 /* ground.obj */; };
 		1640B799275CB680006F0919 /* ground.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B797275CB680006F0919 /* ground.obj */; };
+		1640B7A0275CEAD7006F0919 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1640B79F275CEAD7006F0919 /* Textures.xcassets */; };
+		1640B7A1275CEAD7006F0919 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1640B79F275CEAD7006F0919 /* Textures.xcassets */; };
 		1651807B275C7088000EF658 /* cottage2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 16518074275C7088000EF658 /* cottage2.obj */; };
 		1651807C275C7088000EF658 /* cottage2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 16518074275C7088000EF658 /* cottage2.obj */; };
 		1651807D275C7088000EF658 /* cottage2.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 16518075275C7088000EF658 /* cottage2.mtl */; };
@@ -85,18 +77,6 @@
 		165180B1275C850B000EF658 /* chest.obj in Resources */ = {isa = PBXBuildFile; fileRef = 165180AC275C850A000EF658 /* chest.obj */; };
 		165180B2275C850B000EF658 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 165180AD275C850B000EF658 /* license.txt */; };
 		165180B3275C850B000EF658 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 165180AD275C850B000EF658 /* license.txt */; };
-		165180B6275C85A2000EF658 /* chest-roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180B5275C85A2000EF658 /* chest-roughness.png */; };
-		165180B7275C85A2000EF658 /* chest-roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180B5275C85A2000EF658 /* chest-roughness.png */; };
-		165180B9275C85C0000EF658 /* cottage-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180B8275C85C0000EF658 /* cottage-color.png */; };
-		165180BA275C85C0000EF658 /* cottage-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180B8275C85C0000EF658 /* cottage-color.png */; };
-		165180BC275C85C6000EF658 /* cottage-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180BB275C85C6000EF658 /* cottage-normal.png */; };
-		165180BD275C85C6000EF658 /* cottage-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180BB275C85C6000EF658 /* cottage-normal.png */; };
-		165180BF275C85CB000EF658 /* cube-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180BE275C85CB000EF658 /* cube-color.png */; };
-		165180C0275C85CB000EF658 /* cube-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180BE275C85CB000EF658 /* cube-color.png */; };
-		165180C4275C863A000EF658 /* chest-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180C3275C863A000EF658 /* chest-normal.png */; };
-		165180C5275C863A000EF658 /* chest-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180C3275C863A000EF658 /* chest-normal.png */; };
-		165180C7275C8742000EF658 /* chest-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180C6275C8742000EF658 /* chest-color.png */; };
-		165180C8275C8742000EF658 /* chest-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 165180C6275C8742000EF658 /* chest-color.png */; };
 		166571EB275B5CF8000505BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166571EA275B5CF8000505BF /* AppDelegate.swift */; };
 		166571F2275B5CF9000505BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166571F0275B5CF9000505BF /* Main.storyboard */; };
 		16657213275B5E22000505BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1665714C275B487A000505BF /* ViewController.swift */; };
@@ -136,10 +116,6 @@
 		16657278275BA024000505BF /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 16657275275BA024000505BF /* treefir.mtl */; };
 		16657279275BA024000505BF /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 16657275275BA024000505BF /* treefir.mtl */; };
 		1665727C275BA06D000505BF /* PlatformController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1665727A275BA06D000505BF /* PlatformController.swift */; };
-		166EC2E5275C3A460013DC92 /* lowpoly-house-UVs.png in Resources */ = {isa = PBXBuildFile; fileRef = 166EC2E4275C3A460013DC92 /* lowpoly-house-UVs.png */; };
-		166EC2E6275C3A460013DC92 /* lowpoly-house-UVs.png in Resources */ = {isa = PBXBuildFile; fileRef = 166EC2E4275C3A460013DC92 /* lowpoly-house-UVs.png */; };
-		166EC2E8275C3A5E0013DC92 /* lowpoly-house-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 166EC2E7275C3A5E0013DC92 /* lowpoly-house-color.png */; };
-		166EC2E9275C3A5E0013DC92 /* lowpoly-house-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 166EC2E7275C3A5E0013DC92 /* lowpoly-house-color.png */; };
 		166EC2EB275C3A660013DC92 /* lowpoly-house.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 166EC2EA275C3A660013DC92 /* lowpoly-house.mtl */; };
 		166EC2EC275C3A660013DC92 /* lowpoly-house.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 166EC2EA275C3A660013DC92 /* lowpoly-house.mtl */; };
 		166EC2EE275C3A6B0013DC92 /* lowpoly-house.obj in Resources */ = {isa = PBXBuildFile; fileRef = 166EC2ED275C3A6B0013DC92 /* lowpoly-house.obj */; };
@@ -174,18 +150,14 @@
 		1640B767275CA905006F0919 /* racing-car.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "racing-car.mtl"; sourceTree = "<group>"; };
 		1640B76D275CA92F006F0919 /* oilcan.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = oilcan.mtl; sourceTree = "<group>"; };
 		1640B76E275CA92F006F0919 /* oilcan.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = oilcan.obj; sourceTree = "<group>"; };
-		1640B774275CA96B006F0919 /* oilcan-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oilcan-color.png"; sourceTree = "<group>"; };
-		1640B777275CA98A006F0919 /* racing-car-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "racing-car-color.png"; sourceTree = "<group>"; };
-		1640B77A275CA9B0006F0919 /* racing-car-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "racing-car-normal.png"; sourceTree = "<group>"; };
-		1640B77D275CA9D6006F0919 /* racing-car-roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "racing-car-roughness.png"; sourceTree = "<group>"; };
 		1640B782275CAAD0006F0919 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		1640B785275CAAF0006F0919 /* InputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputController.swift; sourceTree = "<group>"; };
 		1640B788275CAD18006F0919 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		1640B78B275CAD22006F0919 /* MotionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionController.swift; sourceTree = "<group>"; };
 		1640B78E275CB599006F0919 /* large-plane.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "large-plane.mtl"; sourceTree = "<group>"; };
 		1640B78F275CB599006F0919 /* large-plane.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "large-plane.obj"; sourceTree = "<group>"; };
-		1640B794275CB63D006F0919 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 		1640B797275CB680006F0919 /* ground.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ground.obj; sourceTree = "<group>"; };
+		1640B79F275CEAD7006F0919 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Textures.xcassets; sourceTree = "<group>"; };
 		16518074275C7088000EF658 /* cottage2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage2.obj; sourceTree = "<group>"; };
 		16518075275C7088000EF658 /* cottage2.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage2.mtl; sourceTree = "<group>"; };
 		16518076275C7088000EF658 /* cottage1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage1.obj; sourceTree = "<group>"; };
@@ -196,14 +168,6 @@
 		165180AB275C850A000EF658 /* chest.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chest.mtl; sourceTree = "<group>"; };
 		165180AC275C850A000EF658 /* chest.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chest.obj; sourceTree = "<group>"; };
 		165180AD275C850B000EF658 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
-		165180B5275C85A2000EF658 /* chest-roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chest-roughness.png"; sourceTree = "<group>"; };
-		165180B8275C85C0000EF658 /* cottage-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cottage-color.png"; sourceTree = "<group>"; };
-		165180BB275C85C6000EF658 /* cottage-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cottage-normal.png"; sourceTree = "<group>"; };
-		165180BE275C85CB000EF658 /* cube-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cube-color.png"; sourceTree = "<group>"; };
-		165180C1275C85D0000EF658 /* cube-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cube-normal.png"; sourceTree = "<group>"; };
-		165180C2275C85D5000EF658 /* cube-roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cube-roughness.png"; sourceTree = "<group>"; };
-		165180C3275C863A000EF658 /* chest-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chest-normal.png"; sourceTree = "<group>"; };
-		165180C6275C8742000EF658 /* chest-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chest-color.png"; sourceTree = "<group>"; };
 		1665714C275B487A000505BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1665714E275B487B000505BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16657175275B4DE2000505BF /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
@@ -233,8 +197,6 @@
 		16657274275BA024000505BF /* treefir.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.obj; sourceTree = "<group>"; };
 		16657275275BA024000505BF /* treefir.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.mtl; sourceTree = "<group>"; };
 		1665727A275BA06D000505BF /* PlatformController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformController.swift; sourceTree = "<group>"; };
-		166EC2E4275C3A460013DC92 /* lowpoly-house-UVs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lowpoly-house-UVs.png"; sourceTree = "<group>"; };
-		166EC2E7275C3A5E0013DC92 /* lowpoly-house-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lowpoly-house-color.png"; sourceTree = "<group>"; };
 		166EC2EA275C3A660013DC92 /* lowpoly-house.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lowpoly-house.mtl"; sourceTree = "<group>"; };
 		166EC2ED275C3A6B0013DC92 /* lowpoly-house.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lowpoly-house.obj"; sourceTree = "<group>"; };
 		166EC2F4275C3AED0013DC92 /* plane.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plane.mtl; sourceTree = "<group>"; };
@@ -351,52 +313,6 @@
 			path = Cottage1;
 			sourceTree = "<group>";
 		};
-		1640B739275C8BE7006F0919 /* Chest */ = {
-			isa = PBXGroup;
-			children = (
-				165180C6275C8742000EF658 /* chest-color.png */,
-				165180C3275C863A000EF658 /* chest-normal.png */,
-				165180B5275C85A2000EF658 /* chest-roughness.png */,
-			);
-			path = Chest;
-			sourceTree = "<group>";
-		};
-		1640B73A275C8BEE006F0919 /* Cottage */ = {
-			isa = PBXGroup;
-			children = (
-				165180B8275C85C0000EF658 /* cottage-color.png */,
-				165180BB275C85C6000EF658 /* cottage-normal.png */,
-			);
-			path = Cottage;
-			sourceTree = "<group>";
-		};
-		1640B73B275C8BF5006F0919 /* Cube */ = {
-			isa = PBXGroup;
-			children = (
-				165180BE275C85CB000EF658 /* cube-color.png */,
-				165180C1275C85D0000EF658 /* cube-normal.png */,
-				165180C2275C85D5000EF658 /* cube-roughness.png */,
-			);
-			path = Cube;
-			sourceTree = "<group>";
-		};
-		1640B73C275C8BFB006F0919 /* Lowpoly-House */ = {
-			isa = PBXGroup;
-			children = (
-				166EC2E7275C3A5E0013DC92 /* lowpoly-house-color.png */,
-				166EC2E4275C3A460013DC92 /* lowpoly-house-UVs.png */,
-			);
-			path = "Lowpoly-House";
-			sourceTree = "<group>";
-		};
-		1640B73D275C8C03006F0919 /* Ground */ = {
-			isa = PBXGroup;
-			children = (
-				1640B794275CB63D006F0919 /* ground.png */,
-			);
-			path = Ground;
-			sourceTree = "<group>";
-		};
 		1640B741275C8C5A006F0919 /* Animation Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,24 +339,6 @@
 			children = (
 				1640B76D275CA92F006F0919 /* oilcan.mtl */,
 				1640B76E275CA92F006F0919 /* oilcan.obj */,
-			);
-			path = Oilcan;
-			sourceTree = "<group>";
-		};
-		1640B780275CA9DC006F0919 /* Car */ = {
-			isa = PBXGroup;
-			children = (
-				1640B77D275CA9D6006F0919 /* racing-car-roughness.png */,
-				1640B77A275CA9B0006F0919 /* racing-car-normal.png */,
-				1640B777275CA98A006F0919 /* racing-car-color.png */,
-			);
-			path = Car;
-			sourceTree = "<group>";
-		};
-		1640B781275CA9E3006F0919 /* Oilcan */ = {
-			isa = PBXGroup;
-			children = (
-				1640B774275CA96B006F0919 /* oilcan-color.png */,
 			);
 			path = Oilcan;
 			sourceTree = "<group>";
@@ -478,7 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				1665714E275B487B000505BF /* Assets.xcassets */,
-				166EC2F0275C3AB00013DC92 /* Textures */,
+				1640B79F275CEAD7006F0919 /* Textures.xcassets */,
 				166571E3275B5CA6000505BF /* Shaders */,
 				16657180275B5956000505BF /* Models */,
 			);
@@ -579,20 +477,6 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		166EC2F0275C3AB00013DC92 /* Textures */ = {
-			isa = PBXGroup;
-			children = (
-				1640B780275CA9DC006F0919 /* Car */,
-				1640B781275CA9E3006F0919 /* Oilcan */,
-				1640B739275C8BE7006F0919 /* Chest */,
-				1640B73A275C8BEE006F0919 /* Cottage */,
-				1640B73B275C8BF5006F0919 /* Cube */,
-				1640B73D275C8C03006F0919 /* Ground */,
-				1640B73C275C8BFB006F0919 /* Lowpoly-House */,
-			);
-			path = Textures;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -672,47 +556,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1640B795275CB63D006F0919 /* ground.png in Resources */,
 				1651807B275C7088000EF658 /* cottage2.obj in Resources */,
 				16657276275BA024000505BF /* treefir.obj in Resources */,
 				1640B76A275CA905006F0919 /* racing-car.mtl in Resources */,
-				165180BC275C85C6000EF658 /* cottage-normal.png in Resources */,
 				165180B0275C850B000EF658 /* chest.obj in Resources */,
 				1640B730275C8B4D006F0919 /* skeletonWave.usda in Resources */,
 				166EC2EB275C3A660013DC92 /* lowpoly-house.mtl in Resources */,
-				165180B6275C85A2000EF658 /* chest-roughness.png in Resources */,
-				1640B775275CA96B006F0919 /* oilcan-color.png in Resources */,
 				16657217275B5E44000505BF /* Assets.xcassets in Resources */,
 				165180B2275C850B000EF658 /* license.txt in Resources */,
 				1651807D275C7088000EF658 /* cottage2.mtl in Resources */,
-				1640B77E275CA9D6006F0919 /* racing-car-roughness.png in Resources */,
-				165180C7275C8742000EF658 /* chest-color.png in Resources */,
 				16657218275B5E44000505BF /* train.mtl in Resources */,
 				1640B76F275CA92F006F0919 /* oilcan.mtl in Resources */,
 				166EC2F8275C3AED0013DC92 /* plane.obj in Resources */,
 				1640B771275CA92F006F0919 /* oilcan.obj in Resources */,
 				16657278275BA024000505BF /* treefir.mtl in Resources */,
 				1640B790275CB599006F0919 /* large-plane.mtl in Resources */,
+				1640B7A0275CEAD7006F0919 /* Textures.xcassets in Resources */,
 				16657219275B5E44000505BF /* train.obj in Resources */,
 				1640B798275CB680006F0919 /* ground.obj in Resources */,
-				166EC2E8275C3A5E0013DC92 /* lowpoly-house-color.png in Resources */,
-				1640B77B275CA9B0006F0919 /* racing-car-normal.png in Resources */,
 				166EC2F6275C3AED0013DC92 /* plane.mtl in Resources */,
 				166EC2EE275C3A6B0013DC92 /* lowpoly-house.obj in Resources */,
-				165180C4275C863A000EF658 /* chest-normal.png in Resources */,
-				165180BF275C85CB000EF658 /* cube-color.png in Resources */,
 				1640B727275C8B3D006F0919 /* beachball.usda in Resources */,
-				165180B9275C85C0000EF658 /* cottage-color.png in Resources */,
 				16518083275C7088000EF658 /* cottage1.mtl in Resources */,
 				1651807F275C7088000EF658 /* cottage1.obj in Resources */,
 				166571F2275B5CF9000505BF /* Main.storyboard in Resources */,
 				1640B792275CB599006F0919 /* large-plane.obj in Resources */,
 				16518087275C7088000EF658 /* cube.obj in Resources */,
 				16518081275C7088000EF658 /* cube.mtl in Resources */,
-				1640B778275CA98A006F0919 /* racing-car-color.png in Resources */,
 				1640B768275CA905006F0919 /* racing-car.obj in Resources */,
 				1640B72D275C8B46006F0919 /* ground.mtl in Resources */,
-				166EC2E5275C3A460013DC92 /* lowpoly-house-UVs.png in Resources */,
 				165180AE275C850B000EF658 /* chest.mtl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,19 +597,12 @@
 				16518082275C7088000EF658 /* cube.mtl in Resources */,
 				165180AF275C850B000EF658 /* chest.mtl in Resources */,
 				1651807E275C7088000EF658 /* cottage2.mtl in Resources */,
-				165180BA275C85C0000EF658 /* cottage-color.png in Resources */,
-				165180C5275C863A000EF658 /* chest-normal.png in Resources */,
-				1640B77F275CA9D6006F0919 /* racing-car-roughness.png in Resources */,
 				166EC2F7275C3AED0013DC92 /* plane.mtl in Resources */,
 				166EC2F9275C3AED0013DC92 /* plane.obj in Resources */,
-				165180C8275C8742000EF658 /* chest-color.png in Resources */,
 				1640B728275C8B3D006F0919 /* beachball.usda in Resources */,
-				1640B77C275CA9B0006F0919 /* racing-car-normal.png in Resources */,
 				1640B772275CA92F006F0919 /* oilcan.obj in Resources */,
 				1640B770275CA92F006F0919 /* oilcan.mtl in Resources */,
-				165180B7275C85A2000EF658 /* chest-roughness.png in Resources */,
 				16518088275C7088000EF658 /* cube.obj in Resources */,
-				166EC2E9275C3A5E0013DC92 /* lowpoly-house-color.png in Resources */,
 				165180B1275C850B000EF658 /* chest.obj in Resources */,
 				1640B799275CB680006F0919 /* ground.obj in Resources */,
 				1651807C275C7088000EF658 /* cottage2.obj in Resources */,
@@ -745,21 +610,16 @@
 				16518084275C7088000EF658 /* cottage1.mtl in Resources */,
 				166EC2EF275C3A6B0013DC92 /* lowpoly-house.obj in Resources */,
 				16657253275B5F4D000505BF /* train.obj in Resources */,
-				166EC2E6275C3A460013DC92 /* lowpoly-house-UVs.png in Resources */,
 				1640B793275CB599006F0919 /* large-plane.obj in Resources */,
 				1640B72E275C8B46006F0919 /* ground.mtl in Resources */,
-				165180BD275C85C6000EF658 /* cottage-normal.png in Resources */,
 				16518080275C7088000EF658 /* cottage1.obj in Resources */,
-				1640B779275CA98A006F0919 /* racing-car-color.png in Resources */,
 				1640B769275CA905006F0919 /* racing-car.obj in Resources */,
 				1665722D275B5EB9000505BF /* LaunchScreen.storyboard in Resources */,
 				16657277275BA024000505BF /* treefir.obj in Resources */,
 				1640B76B275CA905006F0919 /* racing-car.mtl in Resources */,
 				1640B791275CB599006F0919 /* large-plane.mtl in Resources */,
-				1640B796275CB63D006F0919 /* ground.png in Resources */,
-				165180C0275C85CB000EF658 /* cube-color.png in Resources */,
 				16657279275BA024000505BF /* treefir.mtl in Resources */,
-				1640B776275CA96B006F0919 /* oilcan-color.png in Resources */,
+				1640B7A1275CEAD7006F0919 /* Textures.xcassets in Resources */,
 				165180B3275C850B000EF658 /* license.txt in Resources */,
 				166EC2EC275C3A660013DC92 /* lowpoly-house.mtl in Resources */,
 				1665722A275B5EB9000505BF /* Assets.xcassets in Resources */,
