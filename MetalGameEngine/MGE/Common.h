@@ -53,7 +53,10 @@ typedef enum
     Normal = 1,
     UV = 2,
     Tangent = 3,
-    Bitangent = 4
+    Bitangent = 4,
+    Color = 5,
+    Joints = 6,
+    Weights = 7
 } Attributes;
 
 typedef enum
@@ -68,10 +71,10 @@ typedef enum
 typedef enum
 {
     BufferIndexVertices = 0,
-    BufferIndexUniforms = 1,
-    BufferIndexLights = 2,
-    BufferIndexFragmentUniforms = 3,
-    BufferIndexMaterials = 4
+    BufferIndexUniforms = 11,
+    BufferIndexLights = 12,
+    BufferIndexFragmentUniforms = 13,
+    BufferIndexMaterials = 14
 } BufferIndices;
 
 typedef struct

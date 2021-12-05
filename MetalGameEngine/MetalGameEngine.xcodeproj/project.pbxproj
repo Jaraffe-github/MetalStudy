@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1640B727275C8B3D006F0919 /* beachball.usda in Resources */ = {isa = PBXBuildFile; fileRef = 1640B726275C8B3D006F0919 /* beachball.usda */; };
+		1640B728275C8B3D006F0919 /* beachball.usda in Resources */ = {isa = PBXBuildFile; fileRef = 1640B726275C8B3D006F0919 /* beachball.usda */; };
+		1640B72B275C8B46006F0919 /* ground.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B729275C8B46006F0919 /* ground.obj */; };
+		1640B72C275C8B46006F0919 /* ground.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B729275C8B46006F0919 /* ground.obj */; };
+		1640B72D275C8B46006F0919 /* ground.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1640B72A275C8B46006F0919 /* ground.mtl */; };
+		1640B72E275C8B46006F0919 /* ground.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1640B72A275C8B46006F0919 /* ground.mtl */; };
+		1640B730275C8B4D006F0919 /* skeletonWave.usda in Resources */ = {isa = PBXBuildFile; fileRef = 1640B72F275C8B4D006F0919 /* skeletonWave.usda */; };
+		1640B731275C8B4D006F0919 /* skeletonWave.usda in Resources */ = {isa = PBXBuildFile; fileRef = 1640B72F275C8B4D006F0919 /* skeletonWave.usda */; };
+		1640B747275C8C5A006F0919 /* AnimationClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B742275C8C5A006F0919 /* AnimationClip.swift */; };
+		1640B748275C8C5A006F0919 /* AnimationClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B742275C8C5A006F0919 /* AnimationClip.swift */; };
+		1640B749275C8C5A006F0919 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B743275C8C5A006F0919 /* Animation.swift */; };
+		1640B74A275C8C5A006F0919 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B743275C8C5A006F0919 /* Animation.swift */; };
+		1640B74B275C8C5A006F0919 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B744275C8C5A006F0919 /* AnimationComponent.swift */; };
+		1640B74C275C8C5A006F0919 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B744275C8C5A006F0919 /* AnimationComponent.swift */; };
+		1640B74D275C8C5A006F0919 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B745275C8C5A006F0919 /* Skeleton.swift */; };
+		1640B74E275C8C5A006F0919 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B745275C8C5A006F0919 /* Skeleton.swift */; };
+		1640B74F275C8C5A006F0919 /* TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B746275C8C5A006F0919 /* TransformComponent.swift */; };
+		1640B750275C8C5A006F0919 /* TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B746275C8C5A006F0919 /* TransformComponent.swift */; };
+		1640B752275C8C69006F0919 /* BallAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B751275C8C69006F0919 /* BallAnimations.swift */; };
+		1640B753275C8C69006F0919 /* BallAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B751275C8C69006F0919 /* BallAnimations.swift */; };
+		1640B755275C9329006F0919 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B754275C9329006F0919 /* Renderable.swift */; };
+		1640B756275C9329006F0919 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B754275C9329006F0919 /* Renderable.swift */; };
 		1651807B275C7088000EF658 /* cottage2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 16518074275C7088000EF658 /* cottage2.obj */; };
 		1651807C275C7088000EF658 /* cottage2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 16518074275C7088000EF658 /* cottage2.obj */; };
 		1651807D275C7088000EF658 /* cottage2.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 16518075275C7088000EF658 /* cottage2.mtl */; };
@@ -103,6 +125,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1640B726275C8B3D006F0919 /* beachball.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = beachball.usda; sourceTree = "<group>"; };
+		1640B729275C8B46006F0919 /* ground.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ground.obj; sourceTree = "<group>"; };
+		1640B72A275C8B46006F0919 /* ground.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ground.mtl; sourceTree = "<group>"; };
+		1640B72F275C8B4D006F0919 /* skeletonWave.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = skeletonWave.usda; sourceTree = "<group>"; };
+		1640B742275C8C5A006F0919 /* AnimationClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClip.swift; sourceTree = "<group>"; };
+		1640B743275C8C5A006F0919 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		1640B744275C8C5A006F0919 /* AnimationComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
+		1640B745275C8C5A006F0919 /* Skeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
+		1640B746275C8C5A006F0919 /* TransformComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformComponent.swift; sourceTree = "<group>"; };
+		1640B751275C8C69006F0919 /* BallAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallAnimations.swift; sourceTree = "<group>"; };
+		1640B754275C9329006F0919 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		16518074275C7088000EF658 /* cottage2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage2.obj; sourceTree = "<group>"; };
 		16518075275C7088000EF658 /* cottage2.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage2.mtl; sourceTree = "<group>"; };
 		16518076275C7088000EF658 /* cottage1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage1.obj; sourceTree = "<group>"; };
@@ -181,6 +214,152 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1640B717275C8A9E006F0919 /* Beachball */ = {
+			isa = PBXGroup;
+			children = (
+				1640B726275C8B3D006F0919 /* beachball.usda */,
+			);
+			path = Beachball;
+			sourceTree = "<group>";
+		};
+		1640B718275C8ABB006F0919 /* Ground */ = {
+			isa = PBXGroup;
+			children = (
+				1640B72A275C8B46006F0919 /* ground.mtl */,
+				1640B729275C8B46006F0919 /* ground.obj */,
+			);
+			path = Ground;
+			sourceTree = "<group>";
+		};
+		1640B719275C8AC7006F0919 /* Skeleton */ = {
+			isa = PBXGroup;
+			children = (
+				1640B72F275C8B4D006F0919 /* skeletonWave.usda */,
+			);
+			path = Skeleton;
+			sourceTree = "<group>";
+		};
+		1640B732275C8B81006F0919 /* Train */ = {
+			isa = PBXGroup;
+			children = (
+				1665717D275B5698000505BF /* train.mtl */,
+				1665717C275B5698000505BF /* train.obj */,
+			);
+			path = Train;
+			sourceTree = "<group>";
+		};
+		1640B733275C8B99006F0919 /* Treefir */ = {
+			isa = PBXGroup;
+			children = (
+				16657275275BA024000505BF /* treefir.mtl */,
+				16657274275BA024000505BF /* treefir.obj */,
+			);
+			path = Treefir;
+			sourceTree = "<group>";
+		};
+		1640B734275C8BA8006F0919 /* Lowpoly-house */ = {
+			isa = PBXGroup;
+			children = (
+				166EC2ED275C3A6B0013DC92 /* lowpoly-house.obj */,
+				166EC2EA275C3A660013DC92 /* lowpoly-house.mtl */,
+			);
+			path = "Lowpoly-house";
+			sourceTree = "<group>";
+		};
+		1640B735275C8BB4006F0919 /* Plane */ = {
+			isa = PBXGroup;
+			children = (
+				166EC2F4275C3AED0013DC92 /* plane.mtl */,
+				166EC2F5275C3AED0013DC92 /* plane.obj */,
+			);
+			path = Plane;
+			sourceTree = "<group>";
+		};
+		1640B736275C8BBC006F0919 /* Cube */ = {
+			isa = PBXGroup;
+			children = (
+				16518077275C7088000EF658 /* cube.mtl */,
+				1651807A275C7088000EF658 /* cube.obj */,
+			);
+			path = Cube;
+			sourceTree = "<group>";
+		};
+		1640B737275C8BC5006F0919 /* Cottage2 */ = {
+			isa = PBXGroup;
+			children = (
+				16518075275C7088000EF658 /* cottage2.mtl */,
+				16518074275C7088000EF658 /* cottage2.obj */,
+			);
+			path = Cottage2;
+			sourceTree = "<group>";
+		};
+		1640B738275C8BCD006F0919 /* Cottage1 */ = {
+			isa = PBXGroup;
+			children = (
+				16518078275C7088000EF658 /* cottage1.mtl */,
+				16518076275C7088000EF658 /* cottage1.obj */,
+			);
+			path = Cottage1;
+			sourceTree = "<group>";
+		};
+		1640B739275C8BE7006F0919 /* Chest */ = {
+			isa = PBXGroup;
+			children = (
+				165180C6275C8742000EF658 /* chest-color.png */,
+				165180C3275C863A000EF658 /* chest-normal.png */,
+				165180B5275C85A2000EF658 /* chest-roughness.png */,
+			);
+			path = Chest;
+			sourceTree = "<group>";
+		};
+		1640B73A275C8BEE006F0919 /* Cottage */ = {
+			isa = PBXGroup;
+			children = (
+				165180B8275C85C0000EF658 /* cottage-color.png */,
+				165180BB275C85C6000EF658 /* cottage-normal.png */,
+			);
+			path = Cottage;
+			sourceTree = "<group>";
+		};
+		1640B73B275C8BF5006F0919 /* Cube */ = {
+			isa = PBXGroup;
+			children = (
+				165180BE275C85CB000EF658 /* cube-color.png */,
+				165180C1275C85D0000EF658 /* cube-normal.png */,
+				165180C2275C85D5000EF658 /* cube-roughness.png */,
+			);
+			path = Cube;
+			sourceTree = "<group>";
+		};
+		1640B73C275C8BFB006F0919 /* Lowpoly-House */ = {
+			isa = PBXGroup;
+			children = (
+				166EC2E7275C3A5E0013DC92 /* lowpoly-house-color.png */,
+				166EC2E4275C3A460013DC92 /* lowpoly-house-UVs.png */,
+			);
+			path = "Lowpoly-House";
+			sourceTree = "<group>";
+		};
+		1640B73D275C8C03006F0919 /* Ground */ = {
+			isa = PBXGroup;
+			children = (
+				166EC2F1275C3AE50013DC92 /* ground.png */,
+			);
+			path = Ground;
+			sourceTree = "<group>";
+		};
+		1640B741275C8C5A006F0919 /* Animation Support */ = {
+			isa = PBXGroup;
+			children = (
+				1640B742275C8C5A006F0919 /* AnimationClip.swift */,
+				1640B743275C8C5A006F0919 /* Animation.swift */,
+				1640B744275C8C5A006F0919 /* AnimationComponent.swift */,
+				1640B745275C8C5A006F0919 /* Skeleton.swift */,
+				1640B746275C8C5A006F0919 /* TransformComponent.swift */,
+			);
+			path = "Animation Support";
+			sourceTree = "<group>";
+		};
 		165180AA275C84E5000EF658 /* treasure-chest */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,21 +403,17 @@
 		16657180275B5956000505BF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1640B732275C8B81006F0919 /* Train */,
+				1640B719275C8AC7006F0919 /* Skeleton */,
+				1640B718275C8ABB006F0919 /* Ground */,
+				1640B717275C8A9E006F0919 /* Beachball */,
 				165180AA275C84E5000EF658 /* treasure-chest */,
-				16518078275C7088000EF658 /* cottage1.mtl */,
-				16518076275C7088000EF658 /* cottage1.obj */,
-				16518075275C7088000EF658 /* cottage2.mtl */,
-				16518074275C7088000EF658 /* cottage2.obj */,
-				16518077275C7088000EF658 /* cube.mtl */,
-				1651807A275C7088000EF658 /* cube.obj */,
-				166EC2F4275C3AED0013DC92 /* plane.mtl */,
-				166EC2F5275C3AED0013DC92 /* plane.obj */,
-				166EC2ED275C3A6B0013DC92 /* lowpoly-house.obj */,
-				166EC2EA275C3A660013DC92 /* lowpoly-house.mtl */,
-				16657275275BA024000505BF /* treefir.mtl */,
-				16657274275BA024000505BF /* treefir.obj */,
-				1665717D275B5698000505BF /* train.mtl */,
-				1665717C275B5698000505BF /* train.obj */,
+				1640B738275C8BCD006F0919 /* Cottage1 */,
+				1640B737275C8BC5006F0919 /* Cottage2 */,
+				1640B736275C8BBC006F0919 /* Cube */,
+				1640B735275C8BB4006F0919 /* Plane */,
+				1640B734275C8BA8006F0919 /* Lowpoly-house */,
+				1640B733275C8B99006F0919 /* Treefir */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,6 +421,7 @@
 		166571E2275B5C41000505BF /* MGE */ = {
 			isa = PBXGroup;
 			children = (
+				1640B741275C8C5A006F0919 /* Animation Support */,
 				16657257275B855B000505BF /* Utility */,
 				1665717B275B5677000505BF /* Resources */,
 				16657254275B8197000505BF /* Common.h */,
@@ -260,6 +436,7 @@
 				16657265275B9045000505BF /* VertexDescriptor.swift */,
 				16657259275B874D000505BF /* Camera.swift */,
 				166EC2FA275C40850013DC92 /* Texturable.swift */,
+				1640B754275C9329006F0919 /* Renderable.swift */,
 			);
 			path = MGE;
 			sourceTree = "<group>";
@@ -300,6 +477,7 @@
 		16657257275B855B000505BF /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				1640B751275C8C69006F0919 /* BallAnimations.swift */,
 				16657255275B8346000505BF /* MathLibrary.swift */,
 				1665726B275B9378000505BF /* DebugLights.swift */,
 				1665726E275B93B1000505BF /* DebugLights.metal */,
@@ -310,17 +488,11 @@
 		166EC2F0275C3AB00013DC92 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
-				165180C6275C8742000EF658 /* chest-color.png */,
-				165180C3275C863A000EF658 /* chest-normal.png */,
-				165180B5275C85A2000EF658 /* chest-roughness.png */,
-				165180B8275C85C0000EF658 /* cottage-color.png */,
-				165180BB275C85C6000EF658 /* cottage-normal.png */,
-				165180BE275C85CB000EF658 /* cube-color.png */,
-				165180C1275C85D0000EF658 /* cube-normal.png */,
-				165180C2275C85D5000EF658 /* cube-roughness.png */,
-				166EC2F1275C3AE50013DC92 /* ground.png */,
-				166EC2E7275C3A5E0013DC92 /* lowpoly-house-color.png */,
-				166EC2E4275C3A460013DC92 /* lowpoly-house-UVs.png */,
+				1640B739275C8BE7006F0919 /* Chest */,
+				1640B73A275C8BEE006F0919 /* Cottage */,
+				1640B73B275C8BF5006F0919 /* Cube */,
+				1640B73D275C8C03006F0919 /* Ground */,
+				1640B73C275C8BFB006F0919 /* Lowpoly-House */,
 			);
 			path = Textures;
 			sourceTree = "<group>";
@@ -408,6 +580,8 @@
 				16657276275BA024000505BF /* treefir.obj in Resources */,
 				165180BC275C85C6000EF658 /* cottage-normal.png in Resources */,
 				165180B0275C850B000EF658 /* chest.obj in Resources */,
+				1640B730275C8B4D006F0919 /* skeletonWave.usda in Resources */,
+				1640B72B275C8B46006F0919 /* ground.obj in Resources */,
 				166EC2EB275C3A660013DC92 /* lowpoly-house.mtl in Resources */,
 				165180B6275C85A2000EF658 /* chest-roughness.png in Resources */,
 				16657217275B5E44000505BF /* Assets.xcassets in Resources */,
@@ -424,12 +598,14 @@
 				166EC2EE275C3A6B0013DC92 /* lowpoly-house.obj in Resources */,
 				165180C4275C863A000EF658 /* chest-normal.png in Resources */,
 				165180BF275C85CB000EF658 /* cube-color.png in Resources */,
+				1640B727275C8B3D006F0919 /* beachball.usda in Resources */,
 				165180B9275C85C0000EF658 /* cottage-color.png in Resources */,
 				16518083275C7088000EF658 /* cottage1.mtl in Resources */,
 				1651807F275C7088000EF658 /* cottage1.obj in Resources */,
 				166571F2275B5CF9000505BF /* Main.storyboard in Resources */,
 				16518087275C7088000EF658 /* cube.obj in Resources */,
 				16518081275C7088000EF658 /* cube.mtl in Resources */,
+				1640B72D275C8B46006F0919 /* ground.mtl in Resources */,
 				166EC2E5275C3A460013DC92 /* lowpoly-house-UVs.png in Resources */,
 				165180AE275C850B000EF658 /* chest.mtl in Resources */,
 			);
@@ -439,6 +615,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1640B731275C8B4D006F0919 /* skeletonWave.usda in Resources */,
 				16518082275C7088000EF658 /* cube.mtl in Resources */,
 				165180AF275C850B000EF658 /* chest.mtl in Resources */,
 				1651807E275C7088000EF658 /* cottage2.mtl in Resources */,
@@ -448,6 +625,7 @@
 				166EC2F3275C3AE50013DC92 /* ground.png in Resources */,
 				166EC2F9275C3AED0013DC92 /* plane.obj in Resources */,
 				165180C8275C8742000EF658 /* chest-color.png in Resources */,
+				1640B728275C8B3D006F0919 /* beachball.usda in Resources */,
 				165180B7275C85A2000EF658 /* chest-roughness.png in Resources */,
 				16518088275C7088000EF658 /* cube.obj in Resources */,
 				166EC2E9275C3A5E0013DC92 /* lowpoly-house-color.png in Resources */,
@@ -458,10 +636,12 @@
 				166EC2EF275C3A6B0013DC92 /* lowpoly-house.obj in Resources */,
 				16657253275B5F4D000505BF /* train.obj in Resources */,
 				166EC2E6275C3A460013DC92 /* lowpoly-house-UVs.png in Resources */,
+				1640B72E275C8B46006F0919 /* ground.mtl in Resources */,
 				165180BD275C85C6000EF658 /* cottage-normal.png in Resources */,
 				16518080275C7088000EF658 /* cottage1.obj in Resources */,
 				1665722D275B5EB9000505BF /* LaunchScreen.storyboard in Resources */,
 				16657277275BA024000505BF /* treefir.obj in Resources */,
+				1640B72C275C8B46006F0919 /* ground.obj in Resources */,
 				165180C0275C85CB000EF658 /* cube-color.png in Resources */,
 				16657279275BA024000505BF /* treefir.mtl in Resources */,
 				165180B3275C850B000EF658 /* license.txt in Resources */,
@@ -481,20 +661,27 @@
 				16657272275B9407000505BF /* Model.swift in Sources */,
 				16657216275B5E27000505BF /* Shaders.metal in Sources */,
 				16657213275B5E22000505BF /* ViewController.swift in Sources */,
+				1640B755275C9329006F0919 /* Renderable.swift in Sources */,
 				16657266275B9045000505BF /* VertexDescriptor.swift in Sources */,
 				16657214275B5E22000505BF /* Renderer.swift in Sources */,
+				1640B752275C8C69006F0919 /* BallAnimations.swift in Sources */,
+				1640B747275C8C5A006F0919 /* AnimationClip.swift in Sources */,
 				16657269275B91BD000505BF /* PlatformController.swift in Sources */,
 				1665726C275B9378000505BF /* DebugLights.swift in Sources */,
 				1665726F275B93B1000505BF /* DebugLights.metal in Sources */,
 				1665725D275B87BD000505BF /* Node.swift in Sources */,
 				16657215275B5E22000505BF /* Primitive.swift in Sources */,
 				165180A8275C7181000EF658 /* PBR.metal in Sources */,
+				1640B74D275C8C5A006F0919 /* Skeleton.swift in Sources */,
 				166571EB275B5CF8000505BF /* AppDelegate.swift in Sources */,
 				166EC2FB275C40850013DC92 /* Texturable.swift in Sources */,
+				1640B74F275C8C5A006F0919 /* TransformComponent.swift in Sources */,
 				16657260275B8A54000505BF /* Mesh.swift in Sources */,
 				16657263275B8AC2000505BF /* Submesh.swift in Sources */,
 				1665725A275B874D000505BF /* Camera.swift in Sources */,
 				166EC2FE275C45300013DC92 /* Lighting.swift in Sources */,
+				1640B74B275C8C5A006F0919 /* AnimationComponent.swift in Sources */,
+				1640B749275C8C5A006F0919 /* Animation.swift in Sources */,
 				16657256275B8346000505BF /* MathLibrary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,20 +693,27 @@
 				16657273275B9407000505BF /* Model.swift in Sources */,
 				16657258275B85F7000505BF /* MathLibrary.swift in Sources */,
 				1665724E275B5F41000505BF /* Shaders.metal in Sources */,
+				1640B756275C9329006F0919 /* Renderable.swift in Sources */,
 				16657267275B9045000505BF /* VertexDescriptor.swift in Sources */,
 				1665724F275B5F41000505BF /* ViewController.swift in Sources */,
+				1640B753275C8C69006F0919 /* BallAnimations.swift in Sources */,
+				1640B748275C8C5A006F0919 /* AnimationClip.swift in Sources */,
 				1665726D275B9378000505BF /* DebugLights.swift in Sources */,
 				16657270275B93B1000505BF /* DebugLights.metal in Sources */,
 				1665725E275B87BD000505BF /* Node.swift in Sources */,
 				16657250275B5F41000505BF /* Renderer.swift in Sources */,
 				16657251275B5F41000505BF /* Primitive.swift in Sources */,
 				165180A9275C7181000EF658 /* PBR.metal in Sources */,
+				1640B74E275C8C5A006F0919 /* Skeleton.swift in Sources */,
 				16657261275B8A54000505BF /* Mesh.swift in Sources */,
 				166EC2FC275C40850013DC92 /* Texturable.swift in Sources */,
+				1640B750275C8C5A006F0919 /* TransformComponent.swift in Sources */,
 				1665727C275BA06D000505BF /* PlatformController.swift in Sources */,
 				16657264275B8AC2000505BF /* Submesh.swift in Sources */,
 				1665725B275B874D000505BF /* Camera.swift in Sources */,
 				166EC2FF275C45300013DC92 /* Lighting.swift in Sources */,
+				1640B74C275C8C5A006F0919 /* AnimationComponent.swift in Sources */,
+				1640B74A275C8C5A006F0919 /* Animation.swift in Sources */,
 				16657221275B5EB8000505BF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

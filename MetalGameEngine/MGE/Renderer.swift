@@ -13,6 +13,7 @@ class Renderer: NSObject
     static var commandQueue: MTLCommandQueue!
     static var library: MTLLibrary!
     static var colorPixelFormat: MTLPixelFormat!
+    static var fps: Int!
     
     var uniforms = Uniforms()
     var fragmentUniforms = FragmentUniforms()
@@ -23,12 +24,15 @@ class Renderer: NSObject
     {
         let camera = ArcballCamera()
         camera.distance = 3
-        camera.target = [0, 1, 0]
-        camera.rotation.x = Float(-10).degreesToRadians
+        camera.target = [0, 1.3, 0]
+        camera.rotation.x = Float(-15).degreesToRadians
         return camera
     }()
     
     var models: [Model] = []
+    
+    var currentTime: Float = 0
+    var ballVelocity: Float = 0
     
     init(metalView: MTKView)
     {
@@ -43,20 +47,27 @@ class Renderer: NSObject
         Renderer.commandQueue = commandQueue
         Renderer.library = device.makeDefaultLibrary()
         Renderer.colorPixelFormat = metalView.colorPixelFormat
+        Renderer.fps = metalView.preferredFramesPerSecond
+        
         metalView.device = device
         metalView.depthStencilPixelFormat = .depth32Float
         
         depthStencilState = Renderer.buildDepthStencilState()!
         super.init()
-        metalView.clearColor = MTLClearColor(red: 0.93, green: 0.97, blue: 1.0, alpha: 1.0)
+        metalView.clearColor = MTLClearColor(red: 0.49, green: 0.62, blue: 0.75, alpha: 1.0)
         metalView.delegate = self
         mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
        
         fragmentUniforms.lightCount = lighting.count
         
-        let model = Model(name: "chest.obj")
-        model.position = [0, 0, 0]
-        models.append(model)
+        // models
+        let skeleton = Model(name: "skeletonWave.usda")
+        skeleton.rotation = [.pi / 2, .pi, 0]
+        skeleton.scale = [100, 100, 100]
+        models.append(skeleton)
+        let ground = Model(name: "ground.obj")
+        ground.scale = [100, 100, 100]
+        models.append(ground)
     }
     
     static func buildDepthStencilState() -> MTLDepthStencilState?
@@ -86,6 +97,12 @@ extension Renderer: MTKViewDelegate
             return
         }
         
+        let deltaTime = 1 / Float(Renderer.fps)
+        for model in models
+        {
+            model.update(deltaTime: deltaTime)
+        }
+        
         renderEncoder.setDepthStencilState(depthStencilState)
         
         uniforms.projectionMatrix = camera.projectionMatrix
@@ -99,50 +116,11 @@ extension Renderer: MTKViewDelegate
     
         for model in models
         {
-            fragmentUniforms.tiling = model.tiling
-            renderEncoder.setFragmentBytes(&fragmentUniforms,
-                                           length: MemoryLayout<FragmentUniforms>.stride,
-                                           index: Int(BufferIndexFragmentUniforms.rawValue))
-            
-            renderEncoder.setFragmentSamplerState(model.samplerState, index: 0)
-            
-            uniforms.modelMatrix = model.modelMatrix
-            uniforms.normalMatrix = uniforms.modelMatrix.upperLeft
-            
-            renderEncoder.setVertexBytes(&uniforms,
-                                         length: MemoryLayout<Uniforms>.stride,
-                                         index: Int(BufferIndexUniforms.rawValue))
-            
-            for mesh in model.meshes
-            {
-                for (index, vertexBuffer) in mesh.mtkMesh.vertexBuffers.enumerated()
-                {
-                    renderEncoder.setVertexBuffer(vertexBuffer.buffer, offset: 0, index: index)
-                }
-
-                for submesh in mesh.submeshes
-                {
-                    renderEncoder.setRenderPipelineState(submesh.pipelineState)
-                    
-                    renderEncoder.setFragmentTexture(submesh.textures.baseColor, index: Int(BaseColorTexture.rawValue))
-                    renderEncoder.setFragmentTexture(submesh.textures.normal, index: Int(NormalTexture.rawValue))
-                    renderEncoder.setFragmentTexture(submesh.textures.roughness, index: Int(RoughnessTexture.rawValue))
-                    renderEncoder.setFragmentTexture(submesh.textures.metallic, index: Int(MetallicTexture.rawValue))
-                    renderEncoder.setFragmentTexture(submesh.textures.ao, index: Int(AOTexture.rawValue))
-                    
-                    var material = submesh.material
-                    renderEncoder.setFragmentBytes(&material,
-                                                   length: MemoryLayout<Material>.stride,
-                                                   index: Int(BufferIndexMaterials.rawValue))
-                    
-                    let mtkSubmesh = submesh.mtkSubmesh
-                    renderEncoder.drawIndexedPrimitives(type: .triangle,
-                                                        indexCount: mtkSubmesh.indexCount,
-                                                        indexType: mtkSubmesh.indexType,
-                                                        indexBuffer: mtkSubmesh.indexBuffer.buffer,
-                                                        indexBufferOffset: mtkSubmesh.indexBuffer.offset)
-                }
-            }
+            renderEncoder.pushDebugGroup(model.name)
+            model.render(renderEncoder: renderEncoder,
+                         uniforms: uniforms,
+                         fragmentUniforms: fragmentUniforms)
+            renderEncoder.popDebugGroup()
         }
         
         // debugLights(renderEncoder: renderEncoder, lightType: SpotLight)
@@ -154,5 +132,6 @@ extension Renderer: MTKViewDelegate
         }
         commandBuffer.present(drawable)
         commandBuffer.commit()
+        commandBuffer.waitUntilCompleted()
     }
 }

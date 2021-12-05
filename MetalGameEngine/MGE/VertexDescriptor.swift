@@ -37,19 +37,39 @@ extension MDLVertexDescriptor
         
         // tangent
         vertexDescriptor.attributes[Int(Tangent.rawValue)] = MDLVertexAttribute(name: MDLVertexAttributeTangent,
-                                                                           format: .float3,
-                                                                           offset: offset,
-                                                                           bufferIndex: Int(BufferIndexVertices.rawValue))
-        offset += MemoryLayout<float3>.stride
-        
+                                                                                format: .float3,
+                                                                                offset: 0,
+                                                                                bufferIndex: 1)
         // bitangent
         vertexDescriptor.attributes[Int(Bitangent.rawValue)] = MDLVertexAttribute(name: MDLVertexAttributeBitangent,
+                                                                                  format: .float3,
+                                                                                  offset: 0,
+                                                                                  bufferIndex: 2)
+        
+        // color
+        vertexDescriptor.attributes[Int(Color.rawValue)] = MDLVertexAttribute(name: MDLVertexAttributeColor,
                                                                            format: .float3,
                                                                            offset: offset,
                                                                            bufferIndex: Int(BufferIndexVertices.rawValue))
         offset += MemoryLayout<float3>.stride
         
+        // joints
+        vertexDescriptor.attributes[Int(Joints.rawValue)] = MDLVertexAttribute(name: MDLVertexAttributeJointIndices,
+                                                                           format: .uShort4,
+                                                                           offset: offset,
+                                                                           bufferIndex: Int(BufferIndexVertices.rawValue))
+        offset += MemoryLayout<ushort>.stride * 4
+        
+        // joint weights
+        vertexDescriptor.attributes[Int(Weights.rawValue)] = MDLVertexAttribute(name: MDLVertexAttributeJointWeights,
+                                                                           format: .float4,
+                                                                           offset: offset,
+                                                                           bufferIndex: Int(BufferIndexVertices.rawValue))
+        offset += MemoryLayout<float4>.stride
+        
         vertexDescriptor.layouts[0] = MDLVertexBufferLayout(stride: offset)
+        vertexDescriptor.layouts[1] = MDLVertexBufferLayout(stride: MemoryLayout<float3>.stride)
+        vertexDescriptor.layouts[2] = MDLVertexBufferLayout(stride: MemoryLayout<float3>.stride)
         return vertexDescriptor
     }()
 }

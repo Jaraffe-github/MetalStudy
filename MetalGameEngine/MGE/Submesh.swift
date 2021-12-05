@@ -24,12 +24,12 @@ class Submesh
     let material: Material
     let pipelineState: MTLRenderPipelineState
     
-    init(mdlSubmesh: MDLSubmesh, mtkSubmesh: MTKSubmesh)
+    init(mdlSubmesh: MDLSubmesh, mtkSubmesh: MTKSubmesh, hasSkeleton: Bool)
     {
         self.mtkSubmesh = mtkSubmesh
         textures = Textures(material: mdlSubmesh.material)
         material = Material(material: mdlSubmesh.material)
-        pipelineState = Submesh.makePipelineState(textures: textures)
+        pipelineState = Submesh.makePipelineState(textures: textures, hasSkeleton: hasSkeleton)
     }
 }
 
@@ -51,16 +51,27 @@ private extension Submesh
         return functionConstants;
     }
     
-    static func makePipelineState(textures: Textures) -> MTLRenderPipelineState
+    static func makeVertexFunctionConstants(hasSkeleton: Bool) -> MTLFunctionConstantValues
+    {
+        let functionConstants = MTLFunctionConstantValues()
+        var addSkeleton = hasSkeleton
+        functionConstants.setConstantValue(&addSkeleton, type: .bool, index: 5)
+        return functionConstants
+    }
+    
+    static func makePipelineState(textures: Textures, hasSkeleton: Bool) -> MTLRenderPipelineState
     {
         let functionConstants = makeFunctionConstants(textures: textures)
         
         let library = Renderer.library
-        let vertexFunction = library?.makeFunction(name: "vertex_main")
+        let vertexFunction: MTLFunction?;
         let fragmentFunction: MTLFunction?
         do
         {
             fragmentFunction = try library?.makeFunction(name: "fragment_mainPBR", constantValues: functionConstants)
+            
+            let constantValues = makeVertexFunctionConstants(hasSkeleton: hasSkeleton)
+            vertexFunction = try library?.makeFunction(name: "vertex_main", constantValues: constantValues)
         }
         catch
         {
