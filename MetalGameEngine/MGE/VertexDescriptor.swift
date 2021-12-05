@@ -28,11 +28,26 @@ extension MDLVertexDescriptor
                                                                                bufferIndex: Int(BufferIndexVertices.rawValue))
         offset += MemoryLayout<float3>.stride
         
+        // uv
         vertexDescriptor.attributes[Int(UV.rawValue)] = MDLVertexAttribute(name: MDLVertexAttributeTextureCoordinate,
                                                                            format: .float2,
                                                                            offset: offset,
                                                                            bufferIndex: Int(BufferIndexVertices.rawValue))
         offset += MemoryLayout<float2>.stride
+        
+        // tangent
+        vertexDescriptor.attributes[Int(Tangent.rawValue)] = MDLVertexAttribute(name: MDLVertexAttributeTangent,
+                                                                           format: .float3,
+                                                                           offset: offset,
+                                                                           bufferIndex: Int(BufferIndexVertices.rawValue))
+        offset += MemoryLayout<float3>.stride
+        
+        // bitangent
+        vertexDescriptor.attributes[Int(Bitangent.rawValue)] = MDLVertexAttribute(name: MDLVertexAttributeBitangent,
+                                                                           format: .float3,
+                                                                           offset: offset,
+                                                                           bufferIndex: Int(BufferIndexVertices.rawValue))
+        offset += MemoryLayout<float3>.stride
         
         vertexDescriptor.layouts[0] = MDLVertexBufferLayout(stride: offset)
         return vertexDescriptor

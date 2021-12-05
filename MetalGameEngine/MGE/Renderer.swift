@@ -12,6 +12,7 @@ class Renderer: NSObject
     static var device: MTLDevice!
     static var commandQueue: MTLCommandQueue!
     static var library: MTLLibrary!
+    static var colorPixelFormat: MTLPixelFormat!
     
     var uniforms = Uniforms()
     var fragmentUniforms = FragmentUniforms()
@@ -21,8 +22,8 @@ class Renderer: NSObject
     lazy var camera: Camera =
     {
         let camera = ArcballCamera()
-        camera.distance = 4.3
-        camera.target = [0, 1.2, 0]
+        camera.distance = 3
+        camera.target = [0, 1, 0]
         camera.rotation.x = Float(-10).degreesToRadians
         return camera
     }()
@@ -41,25 +42,21 @@ class Renderer: NSObject
         Renderer.device = device
         Renderer.commandQueue = commandQueue
         Renderer.library = device.makeDefaultLibrary()
+        Renderer.colorPixelFormat = metalView.colorPixelFormat
         metalView.device = device
         metalView.depthStencilPixelFormat = .depth32Float
         
         depthStencilState = Renderer.buildDepthStencilState()!
         super.init()
-        metalView.clearColor = MTLClearColor(red: 0.7, green: 0.9, blue: 1.0, alpha: 1.0)
+        metalView.clearColor = MTLClearColor(red: 0.93, green: 0.97, blue: 1.0, alpha: 1.0)
         metalView.delegate = self
         mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
        
         fragmentUniforms.lightCount = lighting.count
         
-        let house = Model(name: "lowpoly-house.obj")
-        house.position = [0, 0, 0]
-        house.rotation = [0, Float(45).degreesToRadians, 0]
-        models.append(house)
-        let ground = Model(name: "plane.obj")
-        ground.scale = [40, 40, 40]
-        ground.tiling = 16
-        models.append(ground)
+        let model = Model(name: "chest.obj")
+        model.position = [0, 0, 0]
+        models.append(model)
     }
     
     static func buildDepthStencilState() -> MTLDepthStencilState?
@@ -116,17 +113,27 @@ extension Renderer: MTKViewDelegate
                                          length: MemoryLayout<Uniforms>.stride,
                                          index: Int(BufferIndexUniforms.rawValue))
             
-            renderEncoder.setRenderPipelineState(model.pipelineState)
-            
             for mesh in model.meshes
             {
-                let vertexBuffer = mesh.mtkMesh.vertexBuffers[0].buffer
-                renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: Int(BufferIndexVertices.rawValue))
-                
+                for (index, vertexBuffer) in mesh.mtkMesh.vertexBuffers.enumerated()
+                {
+                    renderEncoder.setVertexBuffer(vertexBuffer.buffer, offset: 0, index: index)
+                }
+
                 for submesh in mesh.submeshes
                 {
-                    renderEncoder.setFragmentTexture(submesh.textures.baseColor,
-                                                     index: Int(BaseColorTexture.rawValue))
+                    renderEncoder.setRenderPipelineState(submesh.pipelineState)
+                    
+                    renderEncoder.setFragmentTexture(submesh.textures.baseColor, index: Int(BaseColorTexture.rawValue))
+                    renderEncoder.setFragmentTexture(submesh.textures.normal, index: Int(NormalTexture.rawValue))
+                    renderEncoder.setFragmentTexture(submesh.textures.roughness, index: Int(RoughnessTexture.rawValue))
+                    renderEncoder.setFragmentTexture(submesh.textures.metallic, index: Int(MetallicTexture.rawValue))
+                    renderEncoder.setFragmentTexture(submesh.textures.ao, index: Int(AOTexture.rawValue))
+                    
+                    var material = submesh.material
+                    renderEncoder.setFragmentBytes(&material,
+                                                   length: MemoryLayout<Material>.stride,
+                                                   index: Int(BufferIndexMaterials.rawValue))
                     
                     let mtkSubmesh = submesh.mtkSubmesh
                     renderEncoder.drawIndexedPrimitives(type: .triangle,
@@ -138,7 +145,7 @@ extension Renderer: MTKViewDelegate
             }
         }
         
-        debugLights(renderEncoder: renderEncoder, lightType: SpotLight)
+        // debugLights(renderEncoder: renderEncoder, lightType: SpotLight)
         
         renderEncoder.endEncoding()
         guard let drawable = view.currentDrawable else
