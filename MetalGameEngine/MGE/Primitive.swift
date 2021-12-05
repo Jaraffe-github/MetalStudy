@@ -7,7 +7,8 @@
 
 import MetalKit
 
-class Primitive {
+class Primitive
+{
     static func makeCube(device: MTLDevice, size: Float) -> MDLMesh
     {
         let allocator = MTKMeshBufferAllocator(device: device)

@@ -15,62 +15,19 @@ class Renderer: NSObject
     
     var uniforms = Uniforms()
     var fragmentUniforms = FragmentUniforms()
-    
     let depthStencilState: MTLDepthStencilState
-    
-    // Lights
-    lazy var directionalLight: Light =
-    {
-        var light = buildDefaultLight()
-        light.position = [1, 2, -2]
-        return light;
-    }()
-    lazy var ambientLight: Light =
-    {
-        var light = buildDefaultLight()
-        light.color = [0.5, 1, 0]
-        light.intensity = 0.1
-        light.type = AmbientLight
-        return light
-    }()
-    lazy var pointLight: Light =
-    {
-        var light = buildDefaultLight()
-        light.position = [-0, 0.5, -0.5]
-        light.color = [1, 0, 0]
-        light.attenuation = float3(1, 3, 4)
-        light.type = PointLight
-        return light
-    }()
-    lazy var spotlight: Light =
-    {
-        var light = buildDefaultLight()
-        light.position = [0.4, 0.8, 1]
-        light.color = [1, 0, 1]
-        light.attenuation = float3(1, 0.5, 0)
-        light.type = SpotLight
-        light.coneAngle = Float(40).degreesToRadians
-        light.coneDirection = [-2, 0, -1.5]
-        light.coneAttenuation = 12
-        return light
-    }()
-    var lights: [Light] = []
+    let lighting = Lighting()
     
     lazy var camera: Camera =
     {
         let camera = ArcballCamera()
-        camera.distance = 2.5
-        camera.target = [0.5, 0.5, 0]
+        camera.distance = 4.3
+        camera.target = [0, 1.2, 0]
         camera.rotation.x = Float(-10).degreesToRadians
         return camera
     }()
     
     var models: [Model] = []
-    
-    lazy var lightPipelineState: MTLRenderPipelineState =
-    {
-        return buildLightPipelineState()
-    }()
     
     init(metalView: MTKView)
     {
@@ -89,36 +46,20 @@ class Renderer: NSObject
         
         depthStencilState = Renderer.buildDepthStencilState()!
         super.init()
-        metalView.clearColor = MTLClearColor(red: 1.0, green: 1.0, blue: 0.8, alpha: 1.0)
+        metalView.clearColor = MTLClearColor(red: 0.7, green: 0.9, blue: 1.0, alpha: 1.0)
         metalView.delegate = self
-        
-        let train = Model(name: "train.obj")
-        train.position = [0, 0, 0]
-        train.rotation = [0, Float(45).degreesToRadians, 0]
-        models.append(train)
-        
-        let tree = Model(name: "treefir.obj")
-        tree.position = [1.4, 0, 0]
-        models.append(tree)
-        
         mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
-        lights.append(directionalLight)
-        lights.append(ambientLight)
-        lights.append(pointLight)
-        lights.append(spotlight)
-        fragmentUniforms.lightCount = UInt32(lights.count)
-    }
-    
-    func buildDefaultLight() -> Light
-    {
-        var light = Light()
-        light.position = [0, 0, 0]
-        light.color = [1, 1, 1]
-        light.specularColor = [0.6, 0.6, 0.6]
-        light.intensity = 1
-        light.attenuation = float3(1, 0, 0)
-        light.type = DirectionalLight
-        return light
+       
+        fragmentUniforms.lightCount = lighting.count
+        
+        let house = Model(name: "lowpoly-house.obj")
+        house.position = [0, 0, 0]
+        house.rotation = [0, Float(45).degreesToRadians, 0]
+        models.append(house)
+        let ground = Model(name: "plane.obj")
+        ground.scale = [40, 40, 40]
+        ground.tiling = 16
+        models.append(ground)
     }
     
     static func buildDepthStencilState() -> MTLDepthStencilState?
@@ -154,15 +95,20 @@ extension Renderer: MTKViewDelegate
         uniforms.viewMatrix = camera.viewMatrix
         fragmentUniforms.cameraPosition = camera.position
         
+        var lights = lighting.lights
         renderEncoder.setFragmentBytes(&lights,
                                        length: MemoryLayout<Light>.stride * lights.count,
                                        index: Int(BufferIndexLights.rawValue))
-        renderEncoder.setFragmentBytes(&fragmentUniforms,
-                                       length: MemoryLayout<FragmentUniforms>.stride,
-                                       index: Int(BufferIndexFragmentUniforms.rawValue))
-        
+    
         for model in models
         {
+            fragmentUniforms.tiling = model.tiling
+            renderEncoder.setFragmentBytes(&fragmentUniforms,
+                                           length: MemoryLayout<FragmentUniforms>.stride,
+                                           index: Int(BufferIndexFragmentUniforms.rawValue))
+            
+            renderEncoder.setFragmentSamplerState(model.samplerState, index: 0)
+            
             uniforms.modelMatrix = model.modelMatrix
             uniforms.normalMatrix = uniforms.modelMatrix.upperLeft
             
@@ -179,6 +125,9 @@ extension Renderer: MTKViewDelegate
                 
                 for submesh in mesh.submeshes
                 {
+                    renderEncoder.setFragmentTexture(submesh.textures.baseColor,
+                                                     index: Int(BaseColorTexture.rawValue))
+                    
                     let mtkSubmesh = submesh.mtkSubmesh
                     renderEncoder.drawIndexedPrimitives(type: .triangle,
                                                         indexCount: mtkSubmesh.indexCount,

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "166571E7275B5CF8000505BF"
-               BuildableName = "MGE-macOS.app"
+               BuildableName = "MetalGameEngine-macOS.app"
                BlueprintName = "MetalGameEngine-macOS"
                ReferencedContainer = "container:MetalGameEngine.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "166571E7275B5CF8000505BF"
-            BuildableName = "MGE-macOS.app"
+            BuildableName = "MetalGameEngine-macOS.app"
             BlueprintName = "MetalGameEngine-macOS"
             ReferencedContainer = "container:MetalGameEngine.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "166571E7275B5CF8000505BF"
-            BuildableName = "MGE-macOS.app"
+            BuildableName = "MetalGameEngine-macOS.app"
             BlueprintName = "MetalGameEngine-macOS"
             ReferencedContainer = "container:MetalGameEngine.xcodeproj">
          </BuildableReference>

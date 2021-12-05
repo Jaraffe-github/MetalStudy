@@ -7,7 +7,8 @@
 
 import MetalKit
 
-class Node {
+class Node
+{
     var name: String = "untitled"
     var position: float3 = [0, 0, 0]
     var rotation: float3 = [0, 0, 0]
