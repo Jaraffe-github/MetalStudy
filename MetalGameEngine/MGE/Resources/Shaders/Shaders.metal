@@ -7,7 +7,7 @@
 
 #include <metal_stdlib>
 using namespace metal;
-#import "../../Common.h"
+#import "Common.h"
 
 constant bool hasSkeleton [[function_constant(5)]];
 
@@ -38,6 +38,8 @@ vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
 {
     float4 position = vertexIn.position;
     float4 normal = float4(vertexIn.normal, 0);
+    float4 tangent = float4(vertexIn.tangent, 0);
+    float4 bitangent = float4(vertexIn.bitangent, 0);
     
     if (hasSkeleton)
     {
@@ -51,16 +53,25 @@ vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
                  weights.y * (jointMatrices[joints.y] * normal) +
                  weights.z * (jointMatrices[joints.z] * normal) +
                  weights.w * (jointMatrices[joints.w] * normal);
+        tangent = weights.x * (jointMatrices[joints.x] * tangent) +
+                  weights.y * (jointMatrices[joints.y] * tangent) +
+                  weights.z * (jointMatrices[joints.z] * tangent) +
+                  weights.w * (jointMatrices[joints.w] * tangent);
+        bitangent = weights.x * (jointMatrices[joints.x] * bitangent) +
+                    weights.y * (jointMatrices[joints.y] * bitangent) +
+                    weights.z * (jointMatrices[joints.z] * bitangent) +
+                    weights.w * (jointMatrices[joints.w] * bitangent);
     }
     
     VertexOut out
     {
         .position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * position,
-        .worldPosition = (uniforms.modelMatrix * vertexIn.position).xyz,
+        .worldPosition = (uniforms.modelMatrix * position).xyz,
         .worldNormal = uniforms.normalMatrix * normal.xyz,
-        .worldTangent = 0,
-        .worldBitangent = 0,
+        .worldTangent = uniforms.normalMatrix * tangent.xyz,
+        .worldBitangent = uniforms.normalMatrix * bitangent.xyz,
         .uv = vertexIn.uv
     };
+
     return out;
 }

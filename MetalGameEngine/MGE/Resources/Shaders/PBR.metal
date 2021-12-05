@@ -8,7 +8,7 @@
 #include <metal_stdlib>
 using namespace metal;
 
-#import "../../Common.h"
+#import "Common.h"
 
 constant bool hasColorTexture [[function_constant(0)]];
 constant bool hasNormalTextur [[function_constant(1)]];

@@ -12,34 +12,16 @@ struct Lighting
     let directionalLight: Light =
     {
         var light = Lighting.buildDefaultLight()
-        light.position = [0.4, 1.5, -2]
+        light.position = [3, 3, -2]
         light.type = DirectionalLight
         return light;
     }()
-    let ambientLight: Light =
-    {
-        var light = Lighting.buildDefaultLight()
-        light.color = [1, 1, 1]
-        light.intensity = 0.1
-        light.type = AmbientLight
-        return light
-    }()
-    let fillLight: Light =
-    {
-        var light = Lighting.buildDefaultLight()
-        light.position = [0, -0.1, 0.4]
-        light.color = [0.4, 0.4, 0.4]
-        light.specularColor = [0, 0, 0]
-        light.type = DirectionalLight
-        return light
-    }()
-    
     let lights: [Light];
     let count: UInt32
     
     init()
     {
-        lights = [directionalLight, ambientLight, fillLight]
+        lights = [directionalLight]
         count = UInt32(lights.count)
     }
     

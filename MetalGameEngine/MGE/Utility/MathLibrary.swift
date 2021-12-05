@@ -10,14 +10,14 @@
  *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * t
  * Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
  * distribute, sublicense, create a derivative work, and/or sell copies of the
  * Software in any work that is designed, intended, or marketed for pedagogical or
  * instructional purposes related to programming, coding, application development,
  * or information technology.  Permission for such use, copying, modification,
  * merger, publication, distribution, sublicensing, creation of derivative works,
- * or sale is expressly withheld.
+ * or sale is expressly withheld. t
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -28,7 +28,8 @@
  * THE SOFTWARE.
  */
 
-// Math Library v2.00
+// Math Library v2.01
+// added Rect
 
 import simd
 
@@ -47,7 +48,14 @@ extension Float {
   }
 }
 
-// MARK:- float4
+struct Rectangle {
+  var left: Float = 0
+  var right: Float = 0
+  var top: Float = 0
+  var bottom: Float = 0
+}
+
+// MARK:- float4x4
 extension float4x4 {
   // MARK:- Translate
   init(translation: float3) {
@@ -70,7 +78,7 @@ extension float4x4 {
     )
     self = matrix
   }
-
+  
   init(scaling: Float) {
     self = matrix_identity_float4x4
     columns.3.w = 1 / scaling
@@ -175,6 +183,18 @@ extension float4x4 {
     columns = (X, Y, Z, W)
   }
   
+  init(orthographic rect: Rectangle, near: Float, far: Float) {
+    let X = float4(2 / (rect.right - rect.left), 0, 0, 0)
+    let Y = float4(0, 2 / (rect.top - rect.bottom), 0, 0)
+    let Z = float4(0, 0, 1 / (far - near), 0)
+    let W = float4((rect.left + rect.right) / (rect.left - rect.right),
+                   (rect.top + rect.bottom) / (rect.bottom - rect.top),
+                   near / (near - far),
+                   1)
+    self.init()
+    columns = (X, Y, Z, W)
+  }
+  
   // convert double4x4 to float4x4
   init(_ m: matrix_double4x4) {
     self.init()
@@ -213,3 +233,4 @@ extension float4 {
     self = [Float(d.x), Float(d.y), Float(d.z), Float(d.w)]
   }
 }
+

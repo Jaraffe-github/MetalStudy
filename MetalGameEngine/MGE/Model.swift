@@ -16,6 +16,10 @@ class Model: Node
     
     let animations: [String: AnimationClip]
     var currentTime: Float = 0
+    var currentAnimation: AnimationClip?
+    var animationPaused = true
+    
+    let debugBoundingBox: DebugBoundingBox
     
     init(name: String)
     {
@@ -53,11 +57,15 @@ class Model: Node
         {
             $0 as? MDLPackedJointAnimation
         }
-        let animations = Dictionary(uniqueKeysWithValues: assetAnimations.map
-                                    {
-                                        ($0.name, AnimationComponent.load(animation: $0))
-                                    })
+        let animations: [String: AnimationClip] =
+            Dictionary(uniqueKeysWithValues: assetAnimations.map
+            {
+                let name = URL(fileURLWithPath: $0.name).lastPathComponent
+                return (name, AnimationComponent.load(animation: $0))
+            })
         self.animations = animations
+        
+        debugBoundingBox = DebugBoundingBox(boundingBox: asset.boundingBox)
         
         super.init()
         self.boundingBox = asset.boundingBox
@@ -77,16 +85,24 @@ class Model: Node
     
     override func update(deltaTime: Float)
     {
-        currentTime += deltaTime
+        if animationPaused == false
+        {
+            currentTime += deltaTime
+        }
+
         for mesh in meshes
         {
-            if let animationClip = animations.first?.value
+            if let animationClip = currentAnimation
             {
                 mesh.skeleton?.updatePose(animationClip: animationClip, at: currentTime)
                 mesh.transform?.currentTransform = .identity()
             }
             else
             {
+                if let animationClip = currentAnimation
+                {
+                    mesh.skeleton?.updatePose(animationClip: animationClip, at: currentTime)
+                }
                 mesh.transform?.setCurrentTransform(at: currentTime)
             }
         }
@@ -125,7 +141,7 @@ extension Model: Renderable
             }
             
             let currentLocalTransform = mesh.transform?.currentTransform ?? .identity()
-            uniforms.modelMatrix = modelMatrix * currentLocalTransform
+            uniforms.modelMatrix = worldTransform * currentLocalTransform
         
             uniforms.normalMatrix = uniforms.modelMatrix.upperLeft
             renderEncoder.setVertexBytes(&uniforms,
@@ -150,6 +166,39 @@ extension Model: Renderable
                 renderEncoder.setFragmentBytes(&material, length: MemoryLayout<Material>.stride, index: Int(BufferIndexMaterials.rawValue))
                 render(renderEncoder: renderEncoder, submesh: submesh)
             }
+            if debugRenderBoundingBox
+            {
+                debugBoundingBox.render(renderEncoder: renderEncoder, uniforms: uniforms)
+            }
         }
+    }
+}
+
+extension Model
+{
+    func runAnimation(name: String)
+    {
+        currentAnimation = animations[name]
+        if currentAnimation != nil
+        {
+            animationPaused = false
+            currentTime = 0
+        }
+    }
+    
+    func pauseAnimation()
+    {
+        animationPaused = true
+    }
+    
+    func resumeAnimation()
+    {
+        animationPaused = false
+    }
+    
+    func stopAnimation()
+    {
+        animationPaused = true
+        currentAnimation = nil
     }
 }

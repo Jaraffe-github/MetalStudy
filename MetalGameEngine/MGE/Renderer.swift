@@ -15,25 +15,11 @@ class Renderer: NSObject
     static var colorPixelFormat: MTLPixelFormat!
     static var fps: Int!
     
-    var uniforms = Uniforms()
     var fragmentUniforms = FragmentUniforms()
     let depthStencilState: MTLDepthStencilState
     let lighting = Lighting()
-    
-    lazy var camera: Camera =
-    {
-        let camera = ArcballCamera()
-        camera.distance = 3
-        camera.target = [0, 1.3, 0]
-        camera.rotation.x = Float(-15).degreesToRadians
-        return camera
-    }()
-    
-    var models: [Model] = []
-    
-    var currentTime: Float = 0
-    var ballVelocity: Float = 0
-    
+    var scene: Scene?
+
     init(metalView: MTKView)
     {
         guard
@@ -59,15 +45,6 @@ class Renderer: NSObject
         mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
        
         fragmentUniforms.lightCount = lighting.count
-        
-        // models
-        let skeleton = Model(name: "skeletonWave.usda")
-        skeleton.rotation = [.pi / 2, .pi, 0]
-        skeleton.scale = [100, 100, 100]
-        models.append(skeleton)
-        let ground = Model(name: "ground.obj")
-        ground.scale = [100, 100, 100]
-        models.append(ground)
     }
     
     static func buildDepthStencilState() -> MTLDepthStencilState?
@@ -83,12 +60,13 @@ extension Renderer: MTKViewDelegate
 {
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize)
     {
-        camera.aspect = Float(view.bounds.width) / Float(view.bounds.height)
+        scene?.sceneSizeWillChange(to: size)
     }
     
     func draw(in view: MTKView)
     {
         guard
+            let scene = scene,
             let descriptor = view.currentRenderPassDescriptor,
             let commandBuffer = Renderer.commandQueue.makeCommandBuffer(),
             let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)
@@ -98,28 +76,21 @@ extension Renderer: MTKViewDelegate
         }
         
         let deltaTime = 1 / Float(Renderer.fps)
-        for model in models
-        {
-            model.update(deltaTime: deltaTime)
-        }
+        scene.update(deltaTime: deltaTime)
         
         renderEncoder.setDepthStencilState(depthStencilState)
-        
-        uniforms.projectionMatrix = camera.projectionMatrix
-        uniforms.viewMatrix = camera.viewMatrix
-        fragmentUniforms.cameraPosition = camera.position
         
         var lights = lighting.lights
         renderEncoder.setFragmentBytes(&lights,
                                        length: MemoryLayout<Light>.stride * lights.count,
                                        index: Int(BufferIndexLights.rawValue))
     
-        for model in models
+        for renderable in scene.renderables
         {
-            renderEncoder.pushDebugGroup(model.name)
-            model.render(renderEncoder: renderEncoder,
-                         uniforms: uniforms,
-                         fragmentUniforms: fragmentUniforms)
+            renderEncoder.pushDebugGroup(renderable.name)
+            renderable.render(renderEncoder: renderEncoder,
+                              uniforms: scene.uniforms,
+                              fragmentUniforms: scene.fragmentUniforms)
             renderEncoder.popDebugGroup()
         }
         
