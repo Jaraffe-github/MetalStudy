@@ -20,6 +20,9 @@ class Renderer: NSObject
     let lighting = Lighting()
     var scene: Scene?
 
+    var semaphore: DispatchSemaphore
+    let dispatchQueue = DispatchQueue(label: "Queue", attributes: .concurrent)
+    
     init(metalView: MTKView)
     {
         guard
@@ -38,6 +41,8 @@ class Renderer: NSObject
         metalView.device = device
         metalView.depthStencilPixelFormat = .depth32Float
         
+        semaphore = DispatchSemaphore(value: Scene.buffersInFlight)
+        
         depthStencilState = Renderer.buildDepthStencilState()!
         super.init()
         metalView.clearColor = MTLClearColor(red: 0.49, green: 0.62, blue: 0.75, alpha: 1.0)
@@ -45,6 +50,35 @@ class Renderer: NSObject
         mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
        
         fragmentUniforms.lightCount = lighting.count
+        
+        #if os(OSX)
+        let devices = MTLCopyAllDevices()
+        for device in devices
+        {
+            if #available(macOS 10.15, *)
+            {
+                if device.supportsFamily(.mac2)
+                {
+                    print("\(device.name) is a mac 2 family gpu running on macOS Catalina.")
+                }
+                else
+                {
+                    print("\(device.name) is a mac 1 family gpu running on macOS Catalina.")
+                }
+            }
+            else
+            {
+                if device.supportsFeatureSet(.macOS_GPUFamily2_v1)
+                {
+                    print("You are using a recent GPU with an older version of macOS.")
+                }
+                else
+                {
+                    print("You are using on older GPU with an older version of macOS.")
+                }
+            }
+        }
+        #endif
     }
     
     static func buildDepthStencilState() -> MTLDepthStencilState?
@@ -65,6 +99,8 @@ extension Renderer: MTKViewDelegate
     
     func draw(in view: MTKView)
     {
+        _ = semaphore.wait(timeout: .distantFuture)
+        
         guard
             let scene = scene,
             let descriptor = view.currentRenderPassDescriptor,
@@ -77,14 +113,16 @@ extension Renderer: MTKViewDelegate
         let deltaTime = 1 / Float(Renderer.fps)
         scene.update(deltaTime: deltaTime)
         
+        let uniforms = scene.uniforms[scene.currentUniformIndex]
+        
         if let computeEncoder = commandBuffer.makeComputeCommandEncoder()
         {
-            scene.landscape?.compute(computeEncoder: computeEncoder, uniforms: scene.uniforms)
+            scene.landscape?.compute(computeEncoder: computeEncoder, uniforms: uniforms)
             
             for computable in scene.computables
             {
                 computeEncoder.pushDebugGroup(computable.name)
-                computable.compute(computeEncoder: computeEncoder, uniforms: scene.uniforms)
+                computable.compute(computeEncoder: computeEncoder, uniforms: uniforms)
                 computeEncoder.popDebugGroup()
             }
             computeEncoder.endEncoding()
@@ -94,7 +132,7 @@ extension Renderer: MTKViewDelegate
         {
             renderEncoder.setDepthStencilState(depthStencilState)
             
-            scene.landscape?.render(renderEncoder: renderEncoder, uniforms: scene.uniforms)
+            scene.landscape?.render(renderEncoder: renderEncoder, uniforms: uniforms)
             
             var lights = lighting.lights
             renderEncoder.setFragmentBytes(&lights,
@@ -107,12 +145,12 @@ extension Renderer: MTKViewDelegate
             {
                 renderEncoder.pushDebugGroup(renderable.name)
                 renderable.render(renderEncoder: renderEncoder,
-                                  uniforms: scene.uniforms,
+                                  uniforms: uniforms,
                                   fragmentUniforms: scene.fragmentUniforms)
                 renderEncoder.popDebugGroup()
             }
             
-            scene.skybox?.render(renderEncoder: renderEncoder, uniforms: scene.uniforms)
+            scene.skybox?.render(renderEncoder: renderEncoder, uniforms: uniforms)
             
             // debugLights(renderEncoder: renderEncoder, lightType: SpotLight)
             renderEncoder.endEncoding()
@@ -123,7 +161,16 @@ extension Renderer: MTKViewDelegate
             return
         }
         commandBuffer.present(drawable)
-        commandBuffer.commit()
-        commandBuffer.waitUntilCompleted()
+        
+        commandBuffer.enqueue()
+        
+        weak var sem = semaphore
+        dispatchQueue.async
+        {
+            commandBuffer.addCompletedHandler{_ in sem?.signal() }
+            commandBuffer.commit()
+        }
+        
+        __dispatch_barrier_sync(dispatchQueue) {}
     }
 }

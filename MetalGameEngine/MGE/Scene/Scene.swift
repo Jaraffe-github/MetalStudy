@@ -33,7 +33,10 @@ class Scene
     let rootNode = Node()
     var renderables: [Renderable] = []
     var computables: [Computable] = []
-    var uniforms = Uniforms()
+
+    static let buffersInFlight = 3
+    var uniforms = [Uniforms](repeating: Uniforms(), count: buffersInFlight)
+    var currentUniformIndex = 0
     var fragmentUniforms = FragmentUniforms()
 
     func setupScene() {}
@@ -57,8 +60,9 @@ class Scene
     {
         updatePlayer(deltaTime: deltaTime)
 
-        uniforms.projectionMatrix = camera.projectionMatrix
-        uniforms.viewMatrix = camera.viewMatrix
+        uniforms[currentUniformIndex].projectionMatrix = camera.projectionMatrix
+        uniforms[currentUniformIndex].viewMatrix = camera.viewMatrix
+        currentUniformIndex = (currentUniformIndex + 1) % Scene.buffersInFlight
         fragmentUniforms.cameraPosition = camera.position
 
         updateScene(deltaTime: deltaTime)
