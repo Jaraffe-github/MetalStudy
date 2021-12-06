@@ -26,14 +26,11 @@ class Scene
         self.sceneSize = sceneSize
         setupScene()
         sceneSizeWillChange(to: sceneSize)
-        
-        rootNode.add(childNode: terrain)
-        terrain.scale = [10, 10, 10]
     }
 
     let rootNode = Node()
-    let terrain = TerrainModel(name: "basic terrain")
     var renderables: [Renderable] = []
+    var computables: [Computable] = []
     var uniforms = Uniforms()
     var fragmentUniforms = FragmentUniforms()
 
@@ -77,7 +74,7 @@ class Scene
 
     func updateScene(deltaTime: Float) {}
 
-    final func add(node: Node, parent: Node? = nil, render: Bool = true)
+    final func add(node: Node, parent: Node? = nil, render: Bool = true, compute: Bool = true)
     {
         if let parent = parent
         {
@@ -87,12 +84,16 @@ class Scene
         {
             rootNode.add(childNode: node)
         }
-        guard render == true, let renderable = node as? Renderable
-        else
+        
+        if render == true, let renderable = node as? Renderable
         {
-            return
+            renderables.append(renderable)
         }
-        renderables.append(renderable)
+        
+        if compute == true, let computable = node as? Computable
+        {
+            computables.append(computable)
+        }
     }
 
     final func remove(node: Node)
@@ -109,9 +110,14 @@ class Scene
             }
             node.children = []
         }
-        guard node is Renderable, let index = (renderables.firstIndex { $0 as? Node === node })
-        else { return }
-        renderables.remove(at: index)
+        if node is Renderable, let index = (renderables.firstIndex { $0 as? Node === node })
+        {
+            renderables.remove(at: index)
+        }
+        if node is Computable, let index = (computables.firstIndex { $0 as? Node === node })
+        {
+            computables.remove(at: index)
+        }
     }
 
     func sceneSizeWillChange(to size: CGSize)

@@ -8,13 +8,16 @@
 import Foundation
 import CoreGraphics
 
-class CarScene: Scene
+class TestScene: Scene
 {
     let car = Model(name: "racing-car.obj")
+    let terrain = TerrainModel(name: "basic terrain")
     let orthoCamera = OrthographicCamera()
 
     override func setupScene()
     {
+        terrain.scale = [10, 10, 10]
+        add(node: terrain)
         var bodies: [Node] = []
         var oilcan = Model(name: "oilcan.obj")
         oilcan.position = [-9, 0, -6]
@@ -82,7 +85,7 @@ class CarScene: Scene
 }
 
 #if os(macOS)
-extension CarScene: KeyboardDelegate
+extension TestScene: KeyboardDelegate
 {
     func keyPressed(key: KeyboardControl, state: InputState) -> Bool
     {

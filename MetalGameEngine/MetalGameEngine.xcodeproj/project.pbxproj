@@ -35,8 +35,8 @@
 		1640B75F275CA319006F0919 /* DebugBoundingBox.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1640B75B275CA319006F0919 /* DebugBoundingBox.metal */; };
 		1640B761275CA7A5006F0919 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B760275CA7A5006F0919 /* Scene.swift */; };
 		1640B762275CA7A5006F0919 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B760275CA7A5006F0919 /* Scene.swift */; };
-		1640B764275CA881006F0919 /* carScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B763275CA881006F0919 /* carScene.swift */; };
-		1640B765275CA881006F0919 /* carScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B763275CA881006F0919 /* carScene.swift */; };
+		1640B764275CA881006F0919 /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B763275CA881006F0919 /* TestScene.swift */; };
+		1640B765275CA881006F0919 /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B763275CA881006F0919 /* TestScene.swift */; };
 		1640B768275CA905006F0919 /* racing-car.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B766275CA905006F0919 /* racing-car.obj */; };
 		1640B769275CA905006F0919 /* racing-car.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B766275CA905006F0919 /* racing-car.obj */; };
 		1640B76A275CA905006F0919 /* racing-car.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1640B767275CA905006F0919 /* racing-car.mtl */; };
@@ -63,6 +63,8 @@
 		1640B7A7275D8136006F0919 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7A5275D8136006F0919 /* Data.swift */; };
 		1640B7A9275D82D3006F0919 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7A8275D82D3006F0919 /* Terrain.swift */; };
 		1640B7AA275D82D3006F0919 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7A8275D82D3006F0919 /* Terrain.swift */; };
+		1640B7AC275D9D19006F0919 /* Computable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7AB275D9D19006F0919 /* Computable.swift */; };
+		1640B7AD275D9D19006F0919 /* Computable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7AB275D9D19006F0919 /* Computable.swift */; };
 		1651807B275C7088000EF658 /* cottage2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 16518074275C7088000EF658 /* cottage2.obj */; };
 		1651807C275C7088000EF658 /* cottage2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 16518074275C7088000EF658 /* cottage2.obj */; };
 		1651807D275C7088000EF658 /* cottage2.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 16518075275C7088000EF658 /* cottage2.mtl */; };
@@ -151,7 +153,7 @@
 		1640B75A275CA319006F0919 /* DebugBoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugBoundingBox.swift; sourceTree = "<group>"; };
 		1640B75B275CA319006F0919 /* DebugBoundingBox.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = DebugBoundingBox.metal; sourceTree = "<group>"; };
 		1640B760275CA7A5006F0919 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
-		1640B763275CA881006F0919 /* carScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carScene.swift; sourceTree = "<group>"; };
+		1640B763275CA881006F0919 /* TestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene.swift; sourceTree = "<group>"; };
 		1640B766275CA905006F0919 /* racing-car.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "racing-car.obj"; sourceTree = "<group>"; };
 		1640B767275CA905006F0919 /* racing-car.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "racing-car.mtl"; sourceTree = "<group>"; };
 		1640B76D275CA92F006F0919 /* oilcan.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = oilcan.mtl; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		1640B7A2275D7C0D006F0919 /* Terrain.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Terrain.metal; sourceTree = "<group>"; };
 		1640B7A5275D8136006F0919 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		1640B7A8275D82D3006F0919 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
+		1640B7AB275D9D19006F0919 /* Computable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computable.swift; sourceTree = "<group>"; };
 		16518074275C7088000EF658 /* cottage2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage2.obj; sourceTree = "<group>"; };
 		16518075275C7088000EF658 /* cottage2.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage2.mtl; sourceTree = "<group>"; };
 		16518076275C7088000EF658 /* cottage1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage1.obj; sourceTree = "<group>"; };
@@ -352,6 +355,15 @@
 			path = Oilcan;
 			sourceTree = "<group>";
 		};
+		1640B7AE275DA079006F0919 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1640B754275C9329006F0919 /* Renderable.swift */,
+				1640B7AB275D9D19006F0919 /* Computable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		165180AA275C84E5000EF658 /* treasure-chest */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +427,7 @@
 		166571E2275B5C41000505BF /* MGE */ = {
 			isa = PBXGroup;
 			children = (
+				1640B7AE275DA079006F0919 /* Protocol */,
 				1640B741275C8C5A006F0919 /* Animation Support */,
 				16657257275B855B000505BF /* Utility */,
 				1665717B275B5677000505BF /* Resources */,
@@ -428,9 +441,8 @@
 				16657265275B9045000505BF /* VertexDescriptor.swift */,
 				16657259275B874D000505BF /* Camera.swift */,
 				166EC2FA275C40850013DC92 /* Texturable.swift */,
-				1640B754275C9329006F0919 /* Renderable.swift */,
 				1640B760275CA7A5006F0919 /* Scene.swift */,
-				1640B763275CA881006F0919 /* carScene.swift */,
+				1640B763275CA881006F0919 /* TestScene.swift */,
 				1640B7A5275D8136006F0919 /* Data.swift */,
 				1640B7A8275D82D3006F0919 /* Terrain.swift */,
 			);
@@ -657,12 +669,13 @@
 				16657266275B9045000505BF /* VertexDescriptor.swift in Sources */,
 				16657214275B5E22000505BF /* Renderer.swift in Sources */,
 				1640B7A9275D82D3006F0919 /* Terrain.swift in Sources */,
+				1640B7AC275D9D19006F0919 /* Computable.swift in Sources */,
 				1640B752275C8C69006F0919 /* BallAnimations.swift in Sources */,
 				1640B747275C8C5A006F0919 /* AnimationClip.swift in Sources */,
 				16657269275B91BD000505BF /* PlatformController.swift in Sources */,
 				1665726F275B93B1000505BF /* DebugLights.metal in Sources */,
 				1665725D275B87BD000505BF /* Node.swift in Sources */,
-				1640B764275CA881006F0919 /* carScene.swift in Sources */,
+				1640B764275CA881006F0919 /* TestScene.swift in Sources */,
 				165180A8275C7181000EF658 /* PBR.metal in Sources */,
 				1640B74D275C8C5A006F0919 /* Skeleton.swift in Sources */,
 				166571EB275B5CF8000505BF /* AppDelegate.swift in Sources */,
@@ -697,13 +710,14 @@
 				1665724F275B5F41000505BF /* ViewController.swift in Sources */,
 				1640B753275C8C69006F0919 /* BallAnimations.swift in Sources */,
 				1640B7AA275D82D3006F0919 /* Terrain.swift in Sources */,
+				1640B7AD275D9D19006F0919 /* Computable.swift in Sources */,
 				1640B748275C8C5A006F0919 /* AnimationClip.swift in Sources */,
 				1640B78D275CAD22006F0919 /* MotionController.swift in Sources */,
 				16657270275B93B1000505BF /* DebugLights.metal in Sources */,
 				1665725E275B87BD000505BF /* Node.swift in Sources */,
 				16657250275B5F41000505BF /* Renderer.swift in Sources */,
 				1640B78A275CAD18006F0919 /* GameView.swift in Sources */,
-				1640B765275CA881006F0919 /* carScene.swift in Sources */,
+				1640B765275CA881006F0919 /* TestScene.swift in Sources */,
 				165180A9275C7181000EF658 /* PBR.metal in Sources */,
 				1640B74E275C8C5A006F0919 /* Skeleton.swift in Sources */,
 				16657261275B8A54000505BF /* Mesh.swift in Sources */,

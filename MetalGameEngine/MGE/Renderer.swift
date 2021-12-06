@@ -77,41 +77,39 @@ extension Renderer: MTKViewDelegate
         let deltaTime = 1 / Float(Renderer.fps)
         scene.update(deltaTime: deltaTime)
         
-        guard let computEncoder = commandBuffer.makeComputeCommandEncoder()
-        else
+        if let computEncoder = commandBuffer.makeComputeCommandEncoder()
         {
-            return
+            for computable in scene.computables
+            {
+                computEncoder.pushDebugGroup(computable.name)
+                computable.compute(computeEncoder: computEncoder, uniforms: scene.uniforms)
+                computEncoder.popDebugGroup()
+            }
+            computEncoder.endEncoding()
         }
-        computEncoder.pushDebugGroup(scene.terrain.name)
-        scene.terrain.compute(uniforms: scene.uniforms, computeEncoder: computEncoder)
-        computEncoder.popDebugGroup()
-        computEncoder.endEncoding()
-        
-        guard let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)
-        else
+
+        if let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)
         {
-            return
+            for renderable in scene.renderables
+            {
+                renderEncoder.setDepthStencilState(depthStencilState)
+                
+                var lights = lighting.lights
+                renderEncoder.setFragmentBytes(&lights,
+                                               length: MemoryLayout<Light>.stride * lights.count,
+                                               index: Int(BufferIndexLights.rawValue))
+                
+                renderEncoder.pushDebugGroup(renderable.name)
+                renderable.render(renderEncoder: renderEncoder,
+                                  uniforms: scene.uniforms,
+                                  fragmentUniforms: scene.fragmentUniforms)
+                renderEncoder.popDebugGroup()
+            }
+            
+            // debugLights(renderEncoder: renderEncoder, lightType: SpotLight)
+            renderEncoder.endEncoding()
         }
-        scene.terrain.render(uniforms: scene.uniforms, renderEncoder: renderEncoder)
-        
-        renderEncoder.setDepthStencilState(depthStencilState)
-        
-        var lights = lighting.lights
-        renderEncoder.setFragmentBytes(&lights,
-                                       length: MemoryLayout<Light>.stride * lights.count,
-                                       index: Int(BufferIndexLights.rawValue))
-    
-        for renderable in scene.renderables
-        {
-            renderEncoder.pushDebugGroup(renderable.name)
-            renderable.render(renderEncoder: renderEncoder,
-                              uniforms: scene.uniforms,
-                              fragmentUniforms: scene.fragmentUniforms)
-            renderEncoder.popDebugGroup()
-        }
-        
-        // debugLights(renderEncoder: renderEncoder, lightType: SpotLight)
-        renderEncoder.endEncoding()
+
         guard let drawable = view.currentDrawable else
         {
             return

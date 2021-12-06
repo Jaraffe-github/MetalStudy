@@ -142,9 +142,9 @@ class TerrainModel: Node, Texturable
     }
 }
 
-extension TerrainModel
+extension TerrainModel: Computable
 {
-    func compute(uniforms: Uniforms, computeEncoder: MTLComputeCommandEncoder)
+    func compute(computeEncoder: MTLComputeCommandEncoder, uniforms: Uniforms)
     {
         computeEncoder.setComputePipelineState(tessellationPipelineState)
         computeEncoder.setBytes(&edgeFactors,
@@ -166,10 +166,14 @@ extension TerrainModel
                                 index: 6)
         
         computeEncoder.dispatchThreadgroups(MTLSizeMake(patchCount, 1, 1), threadsPerThreadgroup: MTLSizeMake(width, 1, 1))
-    
     }
-    
-    func render(uniforms: Uniforms, renderEncoder: MTLRenderCommandEncoder)
+}
+
+extension TerrainModel: Renderable
+{
+    func render(renderEncoder: MTLRenderCommandEncoder,
+                uniforms: Uniforms,
+                fragmentUniforms fragment: FragmentUniforms)
     {
         var mvp = uniforms.projectionMatrix * uniforms.viewMatrix * modelMatrix
         
