@@ -26,9 +26,13 @@ class Scene
         self.sceneSize = sceneSize
         setupScene()
         sceneSizeWillChange(to: sceneSize)
+        
+        rootNode.add(childNode: terrain)
+        terrain.scale = [10, 10, 10]
     }
 
     let rootNode = Node()
+    let terrain = TerrainModel(name: "basic terrain")
     var renderables: [Renderable] = []
     var uniforms = Uniforms()
     var fragmentUniforms = FragmentUniforms()

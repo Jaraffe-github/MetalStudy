@@ -10,7 +10,6 @@ import CoreGraphics
 
 class CarScene: Scene
 {
-    let ground = Model(name: "ground.obj")
     let car = Model(name: "racing-car.obj")
     let orthoCamera = OrthographicCamera()
 
@@ -34,8 +33,6 @@ class CarScene: Scene
         add(node: tree)
         bodies.append(tree)
         inputController.keyboardDelegate = self
-        ground.tiling = 32
-        add(node: ground)
 
         camera.position = [0, 1.2, -4]
         add(node: car, parent: camera)

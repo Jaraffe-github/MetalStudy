@@ -87,4 +87,11 @@ typedef struct
     float shininess;
 } Material;
 
+typedef struct
+{
+    vector_float2 size;
+    float height;
+    uint maxTessellation;
+} Terrain;
+
 #endif /* Common_h */

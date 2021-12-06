@@ -57,6 +57,12 @@
 		1640B799275CB680006F0919 /* ground.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1640B797275CB680006F0919 /* ground.obj */; };
 		1640B7A0275CEAD7006F0919 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1640B79F275CEAD7006F0919 /* Textures.xcassets */; };
 		1640B7A1275CEAD7006F0919 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1640B79F275CEAD7006F0919 /* Textures.xcassets */; };
+		1640B7A3275D7C0D006F0919 /* Terrain.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7A2275D7C0D006F0919 /* Terrain.metal */; };
+		1640B7A4275D7C0D006F0919 /* Terrain.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7A2275D7C0D006F0919 /* Terrain.metal */; };
+		1640B7A6275D8136006F0919 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7A5275D8136006F0919 /* Data.swift */; };
+		1640B7A7275D8136006F0919 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7A5275D8136006F0919 /* Data.swift */; };
+		1640B7A9275D82D3006F0919 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7A8275D82D3006F0919 /* Terrain.swift */; };
+		1640B7AA275D82D3006F0919 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7A8275D82D3006F0919 /* Terrain.swift */; };
 		1651807B275C7088000EF658 /* cottage2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 16518074275C7088000EF658 /* cottage2.obj */; };
 		1651807C275C7088000EF658 /* cottage2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 16518074275C7088000EF658 /* cottage2.obj */; };
 		1651807D275C7088000EF658 /* cottage2.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 16518075275C7088000EF658 /* cottage2.mtl */; };
@@ -158,6 +164,9 @@
 		1640B78F275CB599006F0919 /* large-plane.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "large-plane.obj"; sourceTree = "<group>"; };
 		1640B797275CB680006F0919 /* ground.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ground.obj; sourceTree = "<group>"; };
 		1640B79F275CEAD7006F0919 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Textures.xcassets; sourceTree = "<group>"; };
+		1640B7A2275D7C0D006F0919 /* Terrain.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Terrain.metal; sourceTree = "<group>"; };
+		1640B7A5275D8136006F0919 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		1640B7A8275D82D3006F0919 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		16518074275C7088000EF658 /* cottage2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage2.obj; sourceTree = "<group>"; };
 		16518075275C7088000EF658 /* cottage2.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage2.mtl; sourceTree = "<group>"; };
 		16518076275C7088000EF658 /* cottage1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage1.obj; sourceTree = "<group>"; };
@@ -422,6 +431,8 @@
 				1640B754275C9329006F0919 /* Renderable.swift */,
 				1640B760275CA7A5006F0919 /* Scene.swift */,
 				1640B763275CA881006F0919 /* carScene.swift */,
+				1640B7A5275D8136006F0919 /* Data.swift */,
+				1640B7A8275D82D3006F0919 /* Terrain.swift */,
 			);
 			path = MGE;
 			sourceTree = "<group>";
@@ -434,6 +445,7 @@
 				1665726E275B93B1000505BF /* DebugLights.metal */,
 				16657179275B53D0000505BF /* Shaders.metal */,
 				165180A7275C7181000EF658 /* PBR.metal */,
+				1640B7A2275D7C0D006F0919 /* Terrain.metal */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -639,10 +651,12 @@
 				16657216275B5E27000505BF /* Shaders.metal in Sources */,
 				16657213275B5E22000505BF /* ViewController.swift in Sources */,
 				1640B786275CAAF0006F0919 /* InputController.swift in Sources */,
+				1640B7A3275D7C0D006F0919 /* Terrain.metal in Sources */,
 				1640B755275C9329006F0919 /* Renderable.swift in Sources */,
 				1640B75C275CA319006F0919 /* DebugBoundingBox.swift in Sources */,
 				16657266275B9045000505BF /* VertexDescriptor.swift in Sources */,
 				16657214275B5E22000505BF /* Renderer.swift in Sources */,
+				1640B7A9275D82D3006F0919 /* Terrain.swift in Sources */,
 				1640B752275C8C69006F0919 /* BallAnimations.swift in Sources */,
 				1640B747275C8C5A006F0919 /* AnimationClip.swift in Sources */,
 				16657269275B91BD000505BF /* PlatformController.swift in Sources */,
@@ -664,6 +678,7 @@
 				1640B749275C8C5A006F0919 /* Animation.swift in Sources */,
 				1640B783275CAAD0006F0919 /* GameView.swift in Sources */,
 				16657256275B8346000505BF /* MathLibrary.swift in Sources */,
+				1640B7A6275D8136006F0919 /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,10 +691,12 @@
 				16657258275B85F7000505BF /* MathLibrary.swift in Sources */,
 				1665724E275B5F41000505BF /* Shaders.metal in Sources */,
 				1640B756275C9329006F0919 /* Renderable.swift in Sources */,
+				1640B7A4275D7C0D006F0919 /* Terrain.metal in Sources */,
 				1640B75D275CA319006F0919 /* DebugBoundingBox.swift in Sources */,
 				16657267275B9045000505BF /* VertexDescriptor.swift in Sources */,
 				1665724F275B5F41000505BF /* ViewController.swift in Sources */,
 				1640B753275C8C69006F0919 /* BallAnimations.swift in Sources */,
+				1640B7AA275D82D3006F0919 /* Terrain.swift in Sources */,
 				1640B748275C8C5A006F0919 /* AnimationClip.swift in Sources */,
 				1640B78D275CAD22006F0919 /* MotionController.swift in Sources */,
 				16657270275B93B1000505BF /* DebugLights.metal in Sources */,
@@ -701,6 +718,7 @@
 				1640B74C275C8C5A006F0919 /* AnimationComponent.swift in Sources */,
 				1640B74A275C8C5A006F0919 /* Animation.swift in Sources */,
 				16657221275B5EB8000505BF /* AppDelegate.swift in Sources */,
+				1640B7A7275D8136006F0919 /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

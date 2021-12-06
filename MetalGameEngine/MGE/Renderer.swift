@@ -68,8 +68,7 @@ extension Renderer: MTKViewDelegate
         guard
             let scene = scene,
             let descriptor = view.currentRenderPassDescriptor,
-            let commandBuffer = Renderer.commandQueue.makeCommandBuffer(),
-            let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)
+            let commandBuffer = Renderer.commandQueue.makeCommandBuffer()
         else
         {
             return
@@ -77,6 +76,23 @@ extension Renderer: MTKViewDelegate
         
         let deltaTime = 1 / Float(Renderer.fps)
         scene.update(deltaTime: deltaTime)
+        
+        guard let computEncoder = commandBuffer.makeComputeCommandEncoder()
+        else
+        {
+            return
+        }
+        computEncoder.pushDebugGroup(scene.terrain.name)
+        scene.terrain.compute(uniforms: scene.uniforms, computeEncoder: computEncoder)
+        computEncoder.popDebugGroup()
+        computEncoder.endEncoding()
+        
+        guard let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)
+        else
+        {
+            return
+        }
+        scene.terrain.render(uniforms: scene.uniforms, renderEncoder: renderEncoder)
         
         renderEncoder.setDepthStencilState(depthStencilState)
         
@@ -95,7 +111,6 @@ extension Renderer: MTKViewDelegate
         }
         
         // debugLights(renderEncoder: renderEncoder, lightType: SpotLight)
-        
         renderEncoder.endEncoding()
         guard let drawable = view.currentDrawable else
         {
