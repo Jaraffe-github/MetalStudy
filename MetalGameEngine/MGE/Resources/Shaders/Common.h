@@ -75,6 +75,7 @@ typedef enum
     BufferIndexLights = 12,
     BufferIndexFragmentUniforms = 13,
     BufferIndexMaterials = 14,
+    BufferIndexInstances = 15,
     BufferIndexSkybox = 20,
     BufferIndexSkyboxDiffuse = 21,
     BufferIndexBRDFLut = 22
@@ -96,5 +97,11 @@ typedef struct
     float height;
     uint maxTessellation;
 } Terrain;
+
+struct Instances
+{
+    matrix_float4x4 modelMatrix;
+    matrix_float3x3 normalMatrix;
+};
 
 #endif /* Common_h */

@@ -34,7 +34,9 @@ struct VertexOut
 
 vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
                              constant float4x4* jointMatrices [[buffer(22), function_constant(hasSkeleton)]],
-                             constant Uniforms& uniforms [[ buffer(BufferIndexUniforms) ]])
+                             constant Instances* instances [[buffer(BufferIndexInstances)]],
+                             uint instanceID [[instance_id]],
+                             constant Uniforms& uniforms [[buffer(BufferIndexUniforms)]])
 {
     float4 position = vertexIn.position;
     float4 normal = float4(vertexIn.normal, 0);
@@ -63,15 +65,29 @@ vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
                     weights.w * (jointMatrices[joints.w] * bitangent);
     }
     
+    Instances instance = instances[instanceID];
     VertexOut out
     {
-        .position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * position,
-        .worldPosition = (uniforms.modelMatrix * position).xyz,
-        .worldNormal = uniforms.normalMatrix * normal.xyz,
-        .worldTangent = uniforms.normalMatrix * tangent.xyz,
-        .worldBitangent = uniforms.normalMatrix * bitangent.xyz,
+        .position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * instance.modelMatrix * position,
+        .worldPosition = (uniforms.modelMatrix * instance.modelMatrix * position).xyz,
+        .worldNormal = uniforms.normalMatrix * instance.normalMatrix * normal.xyz,
+        .worldTangent = uniforms.normalMatrix * instance.normalMatrix * tangent.xyz,
+        .worldBitangent = uniforms.normalMatrix * instance.normalMatrix * bitangent.xyz,
         .uv = vertexIn.uv
     };
 
     return out;
+}
+
+fragment float4 skyboxTest(VertexOut in [[stage_in]],
+                           constant FragmentUniforms& fragmentUniforms [[buffer(BufferIndexFragmentUniforms)]],
+                           texturecube<float> skybox [[texture(BufferIndexSkybox)]])
+{
+    float3 viewDirection = in.worldPosition.xyz - fragmentUniforms.cameraPosition;
+    float3 textureCoordinates = reflect(viewDirection, in.worldNormal);
+    constexpr sampler defaultSampler(filter::linear);
+    float4 color = skybox.sample(defaultSampler, textureCoordinates);
+    float4 copper = float4(0.86, 0.7, 0.48, 1);
+    color = color * copper;
+    return color;
 }

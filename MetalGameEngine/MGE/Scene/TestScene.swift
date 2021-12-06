@@ -10,7 +10,8 @@ import CoreGraphics
 
 class TestScene: Scene
 {
-    let car = Model(name: "racing-car.obj")
+    let car = Model(name: "racing-car.obj", fragmentFunctionName: "fragment_IBL")
+    let car2 = Model(name: "racing-car.obj", fragmentFunctionName: "skyboxTest")
     let orthoCamera = OrthographicCamera()
 
     override func setupScene()
@@ -31,21 +32,25 @@ class TestScene: Scene
         add(node: oilcan)
         bodies.append(oilcan)
         
-        var tree = Model(name: "treefir.obj")
-        tree.position = [-7, 0, 3]
-        add(node: tree)
-        bodies.append(tree)
+        var treeTransforms: [Transform] = []
+        treeTransforms.append(Transform(position: [3, 0, 3]))
+        treeTransforms.append(Transform(position: [5, 0, 2]))
+        treeTransforms.append(Transform(position: [7, 0, 2]))
+        treeTransforms.append(Transform(position: [9, 0, 2]))
+        treeTransforms.append(Transform(position: [11, 0, 2]))
         
-        tree = Model(name: "treefir.obj")
-        tree.position = [5, 0, 2]
+        var tree = Model(name: "treefir.obj", transforms: treeTransforms)
         add(node: tree)
         bodies.append(tree)
         
         inputController.keyboardDelegate = self
 
         camera.position = [0, 1.2, -4]
-        add(node: car, parent: camera)
-        car.position = [0.35, -1, 0.1]
+        add(node: car)
+        car.position = [-10, -1, 0.1]
+        
+        add(node: car2)
+        car2.position = [-15, -1, 0.1]
 
         inputController.translationSpeed = 10.0
         inputController.player = camera

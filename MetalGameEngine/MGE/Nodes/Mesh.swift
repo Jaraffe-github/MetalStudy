@@ -14,7 +14,8 @@ struct Mesh
     let transform: TransformComponent?
     let skeleton: Skeleton?
     
-    init(mdlMesh: MDLMesh, mtkMesh: MTKMesh, startTime: TimeInterval, endTime: TimeInterval)
+    init(mdlMesh: MDLMesh, mtkMesh: MTKMesh, startTime: TimeInterval, endTime: TimeInterval,
+         vertexFunctionName: String, fragmentFunctionName: String)
     {
         let skeleton = Skeleton(animationBindComponent: (mdlMesh.componentConforming(to: MDLComponent.self)
                                                         as? MDLAnimationBindComponent))
@@ -25,7 +26,9 @@ struct Mesh
         {
             mesh in Submesh(mdlSubmesh: mesh.0 as! MDLSubmesh,
                             mtkSubmesh: mesh.1,
-                            hasSkeleton: skeleton != nil)
+                            hasSkeleton: skeleton != nil,
+                            vertexFunctionName: vertexFunctionName,
+                            fragmentFunctionName: fragmentFunctionName)
         }
         if let mdlMeshTransform = mdlMesh.transform
         {

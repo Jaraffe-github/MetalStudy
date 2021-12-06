@@ -24,12 +24,15 @@ class Submesh
     let material: Material
     let pipelineState: MTLRenderPipelineState
     
-    init(mdlSubmesh: MDLSubmesh, mtkSubmesh: MTKSubmesh, hasSkeleton: Bool)
+    init(mdlSubmesh: MDLSubmesh, mtkSubmesh: MTKSubmesh, hasSkeleton: Bool, vertexFunctionName: String, fragmentFunctionName: String)
     {
         self.mtkSubmesh = mtkSubmesh
         textures = Textures(material: mdlSubmesh.material)
         material = Material(material: mdlSubmesh.material)
-        pipelineState = Submesh.makePipelineState(textures: textures, hasSkeleton: hasSkeleton)
+        pipelineState = Submesh.makePipelineState(textures: textures,
+                                                  hasSkeleton: hasSkeleton,
+                                                  vertexFunctionName: vertexFunctionName,
+                                                  fragmentFunctionName: fragmentFunctionName)
     }
 }
 
@@ -59,7 +62,10 @@ private extension Submesh
         return functionConstants
     }
     
-    static func makePipelineState(textures: Textures, hasSkeleton: Bool) -> MTLRenderPipelineState
+    static func makePipelineState(textures: Textures,
+                                  hasSkeleton: Bool,
+                                  vertexFunctionName: String,
+                                  fragmentFunctionName: String) -> MTLRenderPipelineState
     {
         let functionConstants = makeFunctionConstants(textures: textures)
         
@@ -68,10 +74,10 @@ private extension Submesh
         let fragmentFunction: MTLFunction?
         do
         {
-            fragmentFunction = try library?.makeFunction(name: "fragment_mainPBR", constantValues: functionConstants)
+            fragmentFunction = try library?.makeFunction(name: fragmentFunctionName, constantValues: functionConstants)
             
             let constantValues = makeVertexFunctionConstants(hasSkeleton: hasSkeleton)
-            vertexFunction = try library?.makeFunction(name: "vertex_main", constantValues: constantValues)
+            vertexFunction = try library?.makeFunction(name: vertexFunctionName, constantValues: constantValues)
         }
         catch
         {

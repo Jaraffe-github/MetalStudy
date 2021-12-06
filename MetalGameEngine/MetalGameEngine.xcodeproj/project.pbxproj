@@ -79,6 +79,9 @@
 		1640B7C9275DC76E006F0919 /* irradiance.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B7C6275DC76E006F0919 /* irradiance.png */; };
 		1640B7CA275DC76E006F0919 /* cube-sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B7C7275DC76E006F0919 /* cube-sky.png */; };
 		1640B7CB275DC76E006F0919 /* cube-sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 1640B7C7275DC76E006F0919 /* cube-sky.png */; };
+		1640B7CE275DCC8B006F0919 /* InputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7CC275DCC8B006F0919 /* InputController.swift */; };
+		1640B7D0275DCE78006F0919 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7CF275DCE78006F0919 /* Transform.swift */; };
+		1640B7D1275DCE78006F0919 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640B7CF275DCE78006F0919 /* Transform.swift */; };
 		1651807B275C7088000EF658 /* cottage2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 16518074275C7088000EF658 /* cottage2.obj */; };
 		1651807C275C7088000EF658 /* cottage2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 16518074275C7088000EF658 /* cottage2.obj */; };
 		1651807D275C7088000EF658 /* cottage2.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 16518075275C7088000EF658 /* cottage2.mtl */; };
@@ -191,6 +194,8 @@
 		1640B7BF275DC2B0006F0919 /* BRDF.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BRDF.metal; sourceTree = "<group>"; };
 		1640B7C6275DC76E006F0919 /* irradiance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = irradiance.png; sourceTree = "<group>"; };
 		1640B7C7275DC76E006F0919 /* cube-sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cube-sky.png"; sourceTree = "<group>"; };
+		1640B7CC275DCC8B006F0919 /* InputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputController.swift; sourceTree = "<group>"; };
+		1640B7CF275DCE78006F0919 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		16518074275C7088000EF658 /* cottage2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage2.obj; sourceTree = "<group>"; };
 		16518075275C7088000EF658 /* cottage2.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage2.mtl; sourceTree = "<group>"; };
 		16518076275C7088000EF658 /* cottage1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cottage1.obj; sourceTree = "<group>"; };
@@ -493,6 +498,7 @@
 				1665717B275B5677000505BF /* Resources */,
 				1665714C275B487A000505BF /* ViewController.swift */,
 				16657175275B4DE2000505BF /* Renderer.swift */,
+				1640B7CF275DCE78006F0919 /* Transform.swift */,
 			);
 			path = MGE;
 			sourceTree = "<group>";
@@ -536,6 +542,7 @@
 				1665722B275B5EB9000505BF /* LaunchScreen.storyboard */,
 				16657229275B5EB9000505BF /* Assets.xcassets */,
 				1665722E275B5EB9000505BF /* Info.plist */,
+				1640B7CC275DCC8B006F0919 /* InputController.swift */,
 			);
 			path = "MGE-iOS";
 			sourceTree = "<group>";
@@ -726,6 +733,7 @@
 				16657214275B5E22000505BF /* Renderer.swift in Sources */,
 				1640B7A9275D82D3006F0919 /* Landscape.swift in Sources */,
 				1640B7B1275DB9C4006F0919 /* Skybox.swift in Sources */,
+				1640B7D0275DCE78006F0919 /* Transform.swift in Sources */,
 				1640B7AC275D9D19006F0919 /* Computable.swift in Sources */,
 				1640B7B4275DC04A006F0919 /* IBL.metal in Sources */,
 				1640B7C0275DC2B0006F0919 /* RendererBRDF.swift in Sources */,
@@ -772,6 +780,7 @@
 				1640B753275C8C69006F0919 /* BallAnimations.swift in Sources */,
 				1640B7AA275D82D3006F0919 /* Landscape.swift in Sources */,
 				1640B7B2275DB9C4006F0919 /* Skybox.swift in Sources */,
+				1640B7D1275DCE78006F0919 /* Transform.swift in Sources */,
 				1640B7AD275D9D19006F0919 /* Computable.swift in Sources */,
 				1640B7B5275DC04A006F0919 /* IBL.metal in Sources */,
 				1640B7C1275DC2B0006F0919 /* RendererBRDF.swift in Sources */,
@@ -788,6 +797,7 @@
 				16657261275B8A54000505BF /* Mesh.swift in Sources */,
 				166EC2FC275C40850013DC92 /* Texturable.swift in Sources */,
 				1640B750275C8C5A006F0919 /* TransformComponent.swift in Sources */,
+				1640B7CE275DCC8B006F0919 /* InputController.swift in Sources */,
 				1640B762275CA7A5006F0919 /* Scene.swift in Sources */,
 				1665727C275BA06D000505BF /* PlatformController.swift in Sources */,
 				1640B759275CA311006F0919 /* PhysicsController.swift in Sources */,
