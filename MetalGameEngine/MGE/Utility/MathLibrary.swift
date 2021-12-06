@@ -28,14 +28,16 @@
  * THE SOFTWARE.
  */
 
-// Math Library v2.01
-// added Rect
+// Math Library v2.02
+// 2.01 added Rect
+// 2.02 added int2
 
 import simd
 
-typealias float2 = SIMD2<Float>
-typealias float3 = SIMD3<Float>
-typealias float4 = SIMD4<Float>
+public typealias int2 = SIMD2<Int32>
+public typealias float2 = SIMD2<Float>
+public typealias float3 = SIMD3<Float>
+public typealias float4 = SIMD4<Float>
 
 let π = Float.pi
 

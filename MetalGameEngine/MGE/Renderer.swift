@@ -77,34 +77,42 @@ extension Renderer: MTKViewDelegate
         let deltaTime = 1 / Float(Renderer.fps)
         scene.update(deltaTime: deltaTime)
         
-        if let computEncoder = commandBuffer.makeComputeCommandEncoder()
+        if let computeEncoder = commandBuffer.makeComputeCommandEncoder()
         {
+            scene.landscape?.compute(computeEncoder: computeEncoder, uniforms: scene.uniforms)
+            
             for computable in scene.computables
             {
-                computEncoder.pushDebugGroup(computable.name)
-                computable.compute(computeEncoder: computEncoder, uniforms: scene.uniforms)
-                computEncoder.popDebugGroup()
+                computeEncoder.pushDebugGroup(computable.name)
+                computable.compute(computeEncoder: computeEncoder, uniforms: scene.uniforms)
+                computeEncoder.popDebugGroup()
             }
-            computEncoder.endEncoding()
+            computeEncoder.endEncoding()
         }
 
         if let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)
         {
+            renderEncoder.setDepthStencilState(depthStencilState)
+            
+            scene.landscape?.render(renderEncoder: renderEncoder, uniforms: scene.uniforms)
+            
+            var lights = lighting.lights
+            renderEncoder.setFragmentBytes(&lights,
+                                           length: MemoryLayout<Light>.stride * lights.count,
+                                           index: Int(BufferIndexLights.rawValue))
+            
+            scene.skybox?.update(renderEncoder: renderEncoder)
+            
             for renderable in scene.renderables
             {
-                renderEncoder.setDepthStencilState(depthStencilState)
-                
-                var lights = lighting.lights
-                renderEncoder.setFragmentBytes(&lights,
-                                               length: MemoryLayout<Light>.stride * lights.count,
-                                               index: Int(BufferIndexLights.rawValue))
-                
                 renderEncoder.pushDebugGroup(renderable.name)
                 renderable.render(renderEncoder: renderEncoder,
                                   uniforms: scene.uniforms,
                                   fragmentUniforms: scene.fragmentUniforms)
                 renderEncoder.popDebugGroup()
             }
+            
+            scene.skybox?.render(renderEncoder: renderEncoder, uniforms: scene.uniforms)
             
             // debugLights(renderEncoder: renderEncoder, lightType: SpotLight)
             renderEncoder.endEncoding()
